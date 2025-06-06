@@ -13,9 +13,8 @@
           <h2><a href="{{ url_for('index') }}">SystemHacks</a></h2>
           <ul class="nav-menu">
               <li><a href="{{ url_for('index') }}">Accueil</a></li>
-              <li><a href="{{ url_for('categories') }}">Catégories</a></li>
+              <li><a href="{{ url_for('astuces') }}">Astuces</a></li>
               <li><a href="{{ url_for('forum') }}" class="active">Forum</a></li>
-              <li><a href="{{ url_for('about') }}">À propos</a></li>
           </ul>
       </div>
   </nav>
@@ -32,28 +31,7 @@
           {% endif %}
       {% endwith %}
 
-      <!-- En-tête du forum -->
-      <div class="forum-header">
-          <h1>💬 Forum SystemHacks</h1>
-          <p>Partagez vos astuces et posez vos questions</p>
-          <div class="forum-stats">
-              <div class="stat">
-                  <strong>{{ stats.topics }}</strong>
-                  <small>Sujets</small>
-              </div>
-              <div class="stat">
-                  <strong>{{ stats.replies }}</strong>
-                  <small>Réponses</small>
-              </div>
-              <div class="stat">
-                  <strong>{{ stats.members }}</strong>
-                  <small>Membres</small>
-              </div>
-          </div>
-      </div>
-
-      <!-- Bouton nouveau sujet -->
-      <a href="{{ url_for('new_topic') }}" class="new-topic-btn">+ Nouveau sujet</a>
+      <h1>💬 Forum</h1>
 
       <!-- Catégories -->
       <div class="categories">
@@ -62,22 +40,9 @@
                   <h3>🐧 Linux</h3>
               </div>
               <div class="topics-list">
-                  {% if topics.linux %}
-                      {% for topic in topics.linux[:5] %}
-                      <div class="topic-item">
-                          <a href="{{ url_for('view_topic', topic_id=topic.id) }}" class="topic-title">
-                              {{ topic.title }}
-                          </a>
-                          <div class="topic-meta">
-                              Par {{ topic.author }} • {{ topic.replies }} réponses • {{ topic.date }}
-                          </div>
-                      </div>
-                      {% endfor %}
-                  {% else %}
-                      <div class="topic-item">
-                          <em>Aucun sujet pour le moment</em>
-                      </div>
-                  {% endif %}
+                  <div class="topic-item">
+                      <em>Aucun sujet pour le moment</em>
+                  </div>
               </div>
           </div>
 
@@ -86,22 +51,9 @@
                   <h3>🪟 Windows</h3>
               </div>
               <div class="topics-list">
-                  {% if topics.windows %}
-                      {% for topic in topics.windows[:5] %}
-                      <div class="topic-item">
-                          <a href="{{ url_for('view_topic', topic_id=topic.id) }}" class="topic-title">
-                              {{ topic.title }}
-                          </a>
-                          <div class="topic-meta">
-                              Par {{ topic.author }} • {{ topic.replies }} réponses • {{ topic.date }}
-                          </div>
-                      </div>
-                      {% endfor %}
-                  {% else %}
-                      <div class="topic-item">
-                          <em>Aucun sujet pour le moment</em>
-                      </div>
-                  {% endif %}
+                  <div class="topic-item">
+                      <em>Aucun sujet pour le moment</em>
+                  </div>
               </div>
           </div>
 
@@ -110,22 +62,9 @@
                   <h3>☁️ Cloud & DevOps</h3>
               </div>
               <div class="topics-list">
-                  {% if topics.cloud %}
-                      {% for topic in topics.cloud[:5] %}
-                      <div class="topic-item">
-                          <a href="{{ url_for('view_topic', topic_id=topic.id) }}" class="topic-title">
-                              {{ topic.title }}
-                          </a>
-                          <div class="topic-meta">
-                              Par {{ topic.author }} • {{ topic.replies }} réponses • {{ topic.date }}
-                          </div>
-                      </div>
-                      {% endfor %}
-                  {% else %}
-                      <div class="topic-item">
-                          <em>Aucun sujet pour le moment</em>
-                      </div>
-                  {% endif %}
+                  <div class="topic-item">
+                      <em>Aucun sujet pour le moment</em>
+                  </div>
               </div>
           </div>
 
@@ -134,22 +73,9 @@
                   <h3>🆘 Aide & Questions</h3>
               </div>
               <div class="topics-list">
-                  {% if topics.help %}
-                      {% for topic in topics.help[:5] %}
-                      <div class="topic-item">
-                          <a href="{{ url_for('view_topic', topic_id=topic.id) }}" class="topic-title">
-                              {{ topic.title }}
-                          </a>
-                          <div class="topic-meta">
-                              Par {{ topic.author }} • {{ topic.replies }} réponses • {{ topic.date }}
-                          </div>
-                      </div>
-                      {% endfor %}
-                  {% else %}
-                      <div class="topic-item">
-                          <em>Aucun sujet pour le moment</em>
-                      </div>
-                  {% endif %}
+                  <div class="topic-item">
+                      <em>Aucun sujet pour le moment</em>
+                  </div>
               </div>
           </div>
       </div>

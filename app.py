@@ -15,10 +15,10 @@ def astuces():
     category = request.args.get('category', 'all')
     return render_template('astuces.html', category=category)
 
-# Route contact
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
+# 🆕 ROUTE FORUM MANQUANTE - AJOUTÉE !
+@app.route('/forum')
+def forum():
+    return render_template('forum.html')
 
 # Routes spécifiques (si vous les utilisez)
 @app.route('/windows')
