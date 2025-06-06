@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Erreur 404 - Page non trouvée{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <div class="container">
+        <div class="error-content">
+            <h1>🔍 Erreur 404</h1>
+            <h2>Page non trouvée</h2>
+            <p>La page que vous cherchez n'existe pas.</p>
+            <a href="{{ url_for('index') }}" class="btn-primary">Retour à l'accueil</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,2488 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astuces - SystemHacks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <h1><a href="{{ url_for('index') }}">SystemHacks</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Accueil</a></li>
+                    <li><a href="{{ url_for('astuces') }}">Astuces</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="astuces-hero">
+            <h1><i class="fas fa-terminal"></i> Base de Connaissances</h1>
+            <p>Explorez notre arsenal d'astuces système pour optimiser votre environnement numérique</p>
+        </section>
+
+        <!-- Filtres de catégories -->
+        <div class="filter-bar">
+            <h2><i class="fas fa-filter"></i> Filtres</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">
+                    <i class="fas fa-globe"></i> Toutes
+                </button>
+                <button class="filter-btn" data-category="windows">
+                    <i class="fab fa-windows"></i> Windows
+                </button>
+                <button class="filter-btn" data-category="linux">
+                    <i class="fab fa-linux"></i> Linux
+                </button>
+                <button class="filter-btn" data-category="security">
+                    <i class="fas fa-shield-alt"></i> Sécurité
+                </button>
+                <button class="filter-btn" data-category="network">
+                    <i class="fas fa-network-wired"></i> Réseau
+                </button>
+                <button class="filter-btn" data-category="performance">
+                    <i class="fas fa-tachometer-alt"></i> Performance
+                </button>
+                <button class="filter-btn" data-category="cloud">
+                    <i class="fab fa-aws"></i> Cloud
+                </button>
+                <button class="filter-btn" data-category="devops">
+                    <i class="fas fa-infinity"></i> DevOps
+                </button>
+                <button class="filter-btn" data-category="database">
+                    <i class="fas fa-database"></i> Database
+                </button>
+                <button class="filter-btn" data-category="virtualization">
+                    <i class="fas fa-cube"></i> Virtualisation
+                </button>
+                <button class="filter-btn" data-category="backup">
+                    <i class="fas fa-save"></i> Backup
+                </button>
+                <button class="filter-btn" data-category="ai">
+                    <i class="fas fa-brain"></i> AI/ML
+                </button>
+                <button class="filter-btn" data-category="bigdata">
+                    <i class="fas fa-chart-bar"></i> Big Data
+                </button>
+                <button class="filter-btn" data-category="iot">
+                    <i class="fas fa-microchip"></i> IoT
+                </button>
+                <button class="filter-btn" data-category="media">
+                    <i class="fas fa-video"></i> Media
+                </button>
+            </div>
+        </div>
+
+        <!-- Barre de recherche -->
+        <div class="search-bar">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Rechercher une astuce...">
+            </div>
+        </div>
+
+        <!-- Liste des astuces -->
+        <div class="astuces-list">
+            <!-- Astuces Windows -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-windows"></i> Raccourcis Windows Avancés</h3>
+                    <span class="difficulty easy">Facile</span>
+                </div>
+                <p>Découvrez des raccourcis Windows méconnus pour booster votre productivité.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>Win + X</code> - Menu administrateur rapide</li>
+                        <li><code>Win + I</code> - Paramètres Windows</li>
+                        <li><code>Win + R</code> puis <code>ms-settings:</code> - Paramètres spécifiques</li>
+                        <li><code>Win + Pause</code> - Informations système</li>
+                        <li><code>Win + Shift + S</code> - Capture d'écran avancée</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Productivité</span>
+                    <span class="tag">Raccourcis</span>
+                </div>
+            </div>
+
+            <!-- Astuces Linux -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-linux"></i> Commandes Linux Puissantes</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Maîtrisez le terminal avec ces commandes avancées pour l'administration système.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>htop</code> - Moniteur système interactif</li>
+                        <li><code>ncdu</code> - Analyseur d'espace disque</li>
+                        <li><code>rsync -avz</code> - Synchronisation efficace</li>
+                        <li><code>find / -name "*.log" -size +100M</code> - Trouver gros fichiers logs</li>
+                        <li><code>systemctl --failed</code> - Services en échec</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Terminal</span>
+                    <span class="tag">Administration</span>
+                </div>
+            </div>
+
+            <!-- Astuces Sécurité -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-shield-alt"></i> Sécurisation Système</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Renforcez la sécurité de votre système avec ces techniques professionnelles.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>fail2ban</code> - Protection contre les attaques brute force</li>
+                        <li><code>ufw enable</code> - Activation firewall Ubuntu</li>
+                        <li><code>chmod 600 ~/.ssh/authorized_keys</code> - Sécuriser SSH</li>
+                        <li><code>lynis audit system</code> - Audit sécurité complet</li>
+                        <li><code>rkhunter --check</code> - Détection rootkits</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Firewall</span>
+                    <span class="tag">SSH</span>
+                    <span class="tag">Audit</span>
+                </div>
+            </div>
+
+            <!-- Astuces Réseau -->
+            <div class="astuce-card" data-category="network">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-network-wired"></i> Diagnostic Réseau</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Outils essentiels pour diagnostiquer et optimiser votre connexion réseau.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>nmap -sn 192.168.1.0/24</code> - Scanner réseau local</li>
+                        <li><code>netstat -tulpn</code> - Ports ouverts et processus</li>
+                        <li><code>iftop</code> - Monitoring trafic en temps réel</li>
+                        <li><code>dig +trace google.com</code> - Traçage DNS complet</li>
+                        <li><code>mtr google.com</code> - Traceroute avancé</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Diagnostic</span>
+                    <span class="tag">DNS</span>
+                    <span class="tag">Monitoring</span>
+                </div>
+            </div>
+
+            <!-- Astuces Performance -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-tachometer-alt"></i> Optimisation Performance</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Techniques pour maximiser les performances de votre système.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>sysctl vm.swappiness=10</code> - Réduire utilisation swap</li>
+                        <li><code>echo 3 > /proc/sys/vm/drop_caches</code> - Vider cache RAM</li>
+                        <li><code>nice -n 19 command</code> - Priorité basse pour processus</li>
+                        <li><code>ionice -c3 command</code> - Priorité I/O basse</li>
+                        <li><code>tmpfs</code> - Système de fichiers en RAM</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">RAM</span>
+                    <span class="tag">CPU</span>
+                    <span class="tag">I/O</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows avancée -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-windows"></i> PowerShell pour Administrateurs</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Scripts PowerShell essentiels pour l'administration Windows.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>Get-WmiObject -Class Win32_LogicalDisk</code> - Info disques</li>
+                        <li><code>Get-Process | Sort-Object CPU -Descending</code> - Processus par CPU</li>
+                        <li><code>Get-EventLog -LogName System -Newest 50</code> - Derniers événements</li>
+                        <li><code>Test-NetConnection -ComputerName google.com -Port 80</code> - Test connectivité</li>
+                        <li><code>Get-Service | Where-Object {$_.Status -eq "Stopped"}</code> - Services arrêtés</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">PowerShell</span>
+                    <span class="tag">Administration</span>
+                </div>
+            </div>
+
+            <!-- Astuce Git/Développement -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-git-alt"></i> Git - Commandes Avancées</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Maîtrisez Git avec ces commandes puissantes pour un workflow professionnel.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>git log --oneline --graph --all</code> - Historique visuel</li>
+                        <li><code>git stash push -m "message"</code> - Sauvegarder modifications</li>
+                        <li><code>git cherry-pick &lt;commit-hash&gt;</code> - Appliquer commit spécifique</li>
+                        <li><code>git bisect start</code> - Recherche dichotomique de bugs</li>
+                        <li><code>git reflog</code> - Historique des actions Git</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Git</span>
+                    <span class="tag">Développement</span>
+                    <span class="tag">Versioning</span>
+                </div>
+            </div>
+
+            <!-- Astuce Docker -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-docker"></i> Docker - Optimisation</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Optimisez vos conteneurs Docker pour la production.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>docker system prune -a</code> - Nettoyer tout le système</li>
+                        <li><code>docker stats --no-stream</code> - Statistiques conteneurs</li>
+                        <li><code>docker exec -it &lt;container&gt; /bin/bash</code> - Accès shell</li>
+                        <li><code>docker logs --tail 50 -f &lt;container&gt;</code> - Logs en temps réel</li>
+                        <li><code>docker build --no-cache -t image:tag .</code> - Build sans cache</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Docker</span>
+                    <span class="tag">Conteneurs</span>
+                    <span class="tag">DevOps</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows Registry -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-windows"></i> Registre Windows - Tweaks</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Modifications avancées du registre pour optimiser Windows.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>regedit</code> - Éditeur de registre (Attention !)</li>
+                        <li><code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer</code></li>
+                        <li><code>DisableTaskMgr</code> - Désactiver Gestionnaire des tâches</li>
+                        <li><code>NoAutoUpdate</code> - Contrôler Windows Update</li>
+                        <li><code>reg export HKLM backup.reg</code> - Sauvegarder registre</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Registre</span>
+                    <span class="tag">Optimisation</span>
+                    <span class="tag">Système</span>
+                </div>
+            </div>
+
+            <!-- Astuce Sécurité SSH -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-key"></i> SSH - Sécurisation Avancée</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Renforcez la sécurité de vos connexions SSH avec ces configurations.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>ssh-keygen -t ed25519 -C "email@domain.com"</code> - Clé moderne</li>
+                        <li><code>PermitRootLogin no</code> - Désactiver login root</li>
+                        <li><code>PasswordAuthentication no</code> - Authentification par clé uniquement</li>
+                        <li><code>Port 2222</code> - Changer port par défaut</li>
+                        <li><code>AllowUsers username</code> - Restreindre utilisateurs</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">SSH</span>
+                    <span class="tag">Authentification</span>
+                    <span class="tag">Clés</span>
+                </div>
+            </div>
+
+            <!-- Astuce Monitoring Réseau -->
+            <div class="astuce-card" data-category="network">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-chart-line"></i> Monitoring Réseau Avancé</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Surveillez et analysez votre trafic réseau comme un pro.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>tcpdump -i eth0 -w capture.pcap</code> - Capture paquets</li>
+                        <li><code>wireshark</code> - Analyse graphique des paquets</li>
+                        <li><code>bandwhich</code> - Utilisation bande passante par processus</li>
+                        <li><code>ss -tulpn</code> - Sockets et connexions</li>
+                        <li><code>iperf3 -s</code> - Test débit réseau</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Wireshark</span>
+                    <span class="tag">Analyse</span>
+                    <span class="tag">Débit</span>
+                </div>
+            </div>
+
+            <!-- Astuce Performance SSD -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-hdd"></i> Optimisation SSD</h3>
+                    <span class="difficulty easy">Facile</span>
+                </div>
+                <p>Maximisez les performances et la durée de vie de vos SSD.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>fstrim -v /</code> - TRIM manuel sur Linux</li>
+                        <li><code>fsutil behavior set DisableDeleteNotify 0</code> - TRIM Windows</li>
+                        <li><code>noatime,nodiratime</code> - Options mount pour SSD</li>
+                        <li><code>smartctl -a /dev/sda</code> - Santé du disque</li>
+                        <li><code>hdparm -I /dev/sda</code> - Informations disque</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">SSD</span>
+                    <span class="tag">TRIM</span>
+                    <span class="tag">Durabilité</span>
+                </div>
+            </div>
+
+            <!-- Astuce Virtualisation -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-server"></i> Virtualisation - KVM/QEMU</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Maîtrisez la virtualisation native Linux avec KVM.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>virt-manager</code> - Interface graphique de gestion</li>
+                        <li><code>virsh list --all</code> - Lister toutes les VMs</li>
+                        <li><code>virsh snapshot-create-as vm1 snap1</code> - Créer snapshot</li>
+                        <li><code>virt-clone --original vm1 --name vm2 --auto-clone</code> - Cloner VM</li>
+                        <li><code>virsh dominfo vm1</code> - Informations VM</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">KVM</span>
+                    <span class="tag">QEMU</span>
+                    <span class="tag">VM</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows Event Logs -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-file-alt"></i> Journaux Windows - Analyse</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Analysez les journaux Windows pour diagnostiquer les problèmes.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>eventvwr.msc</code> - Observateur d'événements</li>
+                        <li><code>wevtutil qe System /c:20 /rd:true /f:text</code> - Logs système</li>
+                        <li><code>Get-WinEvent -LogName Security -MaxEvents 100</code> - Logs sécurité</li>
+                        <li><code>wevtutil cl Application</code> - Vider journal Application</li>
+                        <li><code>Get-EventLog -LogName System -EntryType Error</code> - Erreurs uniquement</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Logs</span>
+                    <span class="tag">Diagnostic</span>
+                    <span class="tag">Événements</span>
+                </div>
+            </div>
+
+            <!-- Astuce Cryptographie -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-lock"></i> Cryptographie - Outils Essentiels</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Chiffrement et sécurisation de données avec des outils professionnels.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>gpg --gen-key</code> - Générer paire de clés GPG</li>
+                        <li><code>openssl rand -base64 32</code> - Générer mot de passe sécurisé</li>
+                        <li><code>cryptsetup luksFormat /dev/sdb1</code> - Chiffrer partition</li>
+                        <li><code>hashcat -m 0 hash.txt wordlist.txt</code> - Craquage hash</li>
+                        <li><code>john --wordlist=rockyou.txt hashes.txt</code> - John the Ripper</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">GPG</span>
+                    <span class="tag">Chiffrement</span>
+                    <span class="tag">Hash</span>
+                </div>
+            </div>
+
+            <!-- Astuce Automatisation -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-robot"></i> Automatisation - Scripts & Cron</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Automatisez vos tâches répétitives avec des scripts intelligents.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>crontab -e</code> - Éditer tâches programmées</li>
+                        <li><code>0 2 * * * /path/to/backup.sh</code> - Sauvegarde quotidienne 2h</li>
+                        <li><code>watch -n 5 'df -h'</code> - Surveiller espace disque</li>
+                        <li><code>at now + 1 hour</code> - Programmer tâche ponctuelle</li>
+                        <li><code>nohup command &</code> - Processus en arrière-plan</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Cron</span>
+                    <span class="tag">Scripts</span>
+                    <span class="tag">Automatisation</span>
+                </div>
+            </div>
+
+            <!-- Astuce Base de données -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-database"></i> MySQL/PostgreSQL - Administration</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Commandes essentielles pour administrer vos bases de données.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>mysqldump -u root -p database_name > backup.sql</code> - Sauvegarde MySQL</li>
+                        <li><code>pg_dump -U username database_name > backup.sql</code> - Sauvegarde PostgreSQL</li>
+                        <li><code>SHOW PROCESSLIST;</code> - Processus actifs MySQL</li>
+                        <li><code>SELECT * FROM pg_stat_activity;</code> - Activité PostgreSQL</li>
+                        <li><code>mysqlcheck -u root -p --optimize --all-databases</code> - Optimiser MySQL</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">MySQL</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Sauvegarde</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows Services -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-cogs"></i> Services Windows - Gestion</h3>
+                    <span class="difficulty easy">Facile</span>
+                </div>
+                <p>Maîtrisez la gestion des services Windows pour optimiser votre système.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>services.msc</code> - Gestionnaire de services</li>
+                        <li><code>sc query</code> - Lister tous les services</li>
+                        <li><code>sc stop "nom_service"</code> - Arrêter un service</li>
+                        <li><code>sc config "nom_service" start= disabled</code> - Désactiver service</li>
+                        <li><code>net start "nom_service"</code> - Démarrer service</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Services</span>
+                    <span class="tag">Optimisation</span>
+                    <span class="tag">Démarrage</span>
+                </div>
+            </div>
+
+            <!-- Astuce Nginx/Apache -->
+            <div class="astuce-card" data-category="network">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-globe"></i> Serveurs Web - Nginx/Apache</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Configuration et optimisation de serveurs web pour la production.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>nginx -t</code> - Tester configuration Nginx</li>
+                        <li><code>systemctl reload nginx</code> - Recharger Nginx</li>
+                        <li><code>apache2ctl configtest</code> - Vérifier config Apache</li>
+                        <li><code>tail -f /var/log/nginx/access.log</code> - Logs en temps réel</li>
+                        <li><code>certbot --nginx -d domain.com</code> - SSL Let's Encrypt</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Nginx</span>
+                    <span class="tag">Apache</span>
+                    <span class="tag">SSL</span>
+                </div>
+            </div>
+
+            <!-- Astuce Forensics -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-search"></i> Investigation Numérique</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Outils d'investigation pour analyser les incidents de sécurité.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>volatility -f memory.dump imageinfo</code> - Analyse mémoire</li>
+                        <li><code>autopsy</code> - Interface forensics graphique</li>
+                        <li><code>dd if=/dev/sda of=disk_image.dd bs=4M</code> - Image disque</li>
+                        <li><code>strings binary_file | grep -i password</code> - Recherche strings</li>
+                        <li><code>binwalk -e firmware.bin</code> - Analyse firmware</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Forensics</span>
+                    <span class="tag">Investigation</span>
+                    <span class="tag">Analyse</span>
+                </div>
+            </div>
+
+            <!-- Astuce Kubernetes -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-dharmachakra"></i> Kubernetes - Orchestration</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Gérez vos clusters Kubernetes comme un expert DevOps.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>kubectl get pods --all-namespaces</code> - Lister tous les pods</li>
+                        <li><code>kubectl describe pod pod-name</code> - Détails d'un pod</li>
+                        <li><code>kubectl logs -f pod-name</code> - Logs en temps réel</li>
+                        <li><code>kubectl exec -it pod-name -- /bin/bash</code> - Shell dans pod</li>
+                        <li><code>helm install release-name chart-name</code> - Déployer avec Helm</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">DevOps</span>
+                    <span class="tag">Orchestration</span>
+                </div>
+            </div>
+
+            <!-- Astuce RAM et Swap -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-memory"></i> Gestion Mémoire Avancée</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Optimisez l'utilisation de la RAM et du swap pour de meilleures performances.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>free -h</code> - Utilisation mémoire détaillée</li>
+                        <li><code>swapon --show</code> - Informations swap</li>
+                        <li><code>echo 1 > /proc/sys/vm/drop_caches</code> - Vider cache page</li>
+                        <li><code>vmstat 1</code> - Statistiques mémoire temps réel</li>
+                        <li><code>mkswap /swapfile && swapon /swapfile</code> - Créer fichier swap</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">RAM</span>
+                    <span class="tag">Swap</span>
+                    <span class="tag">Cache</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows PowerShell ISE -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-terminal"></i> PowerShell ISE - Scripts Avancés</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Créez des scripts PowerShell puissants pour l'automatisation Windows.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>Get-ExecutionPolicy</code> - Vérifier politique d'exécution</li>
+                        <li><code>Set-ExecutionPolicy RemoteSigned</code> - Autoriser scripts locaux</li>
+                        <li><code>Get-Command *service*</code> - Rechercher commandes</li>
+                        <li><code>Get-Help Get-Process -Examples</code> - Aide avec exemples</li>
+                        <li><code>Measure-Command { Get-Process }</code> - Mesurer temps exécution</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">PowerShell</span>
+                    <span class="tag">Scripts</span>
+                    <span class="tag">Automatisation</span>
+                </div>
+            </div>
+
+            <!-- Astuce Penetration Testing -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-bug"></i> Pentest - Outils Kali Linux</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Outils essentiels de test d'intrusion pour évaluer la sécurité.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>nmap -sS -O target.com</code> - Scan furtif avec OS detection</li>
+                        <li><code>nikto -h http://target.com</code> - Scanner vulnérabilités web</li>
+                        <li><code>sqlmap -u "url" --dbs</code> - Test injection SQL</li>
+                        <li><code>hydra -l admin -P passwords.txt ssh://target</code> - Brute force SSH</li>
+                        <li><code>metasploit-framework</code> - Framework d'exploitation</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Pentest</span>
+                    <span class="tag">Kali</span>
+                    <span class="tag">Vulnérabilités</span>
+                </div>
+            </div>
+
+            <!-- Astuce Monitoring Système -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-chart-area"></i> Monitoring Système Complet</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Surveillez les performances système avec des outils professionnels.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>glances</code> - Monitoring système complet</li>
+                        <li><code>iotop</code> - Activité I/O par processus</li>
+                        <li><code>nethogs</code> - Utilisation réseau par processus</li>
+                        <li><code>dstat -cdngy</code> - Statistiques système temps réel</li>
+                        <li><code>atop</code> - Monitoring avancé avec historique</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Monitoring</span>
+                    <span class="tag">Statistiques</span>
+                    <span class="tag">I/O</span>
+                </div>
+            </div>
+
+            <!-- Astuce VPN et Tunnels -->
+            <div class="astuce-card" data-category="network">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-shield-alt"></i> VPN et Tunnels Sécurisés</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Configurez des connexions sécurisées avec VPN et tunnels SSH.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>openvpn --config client.ovpn</code> - Connexion OpenVPN</li>
+                        <li><code>ssh -D 8080 user@server</code> - Tunnel SOCKS</li>
+                        <li><code>ssh -L 8080:localhost:80 user@server</code> - Port forwarding local</li>
+                        <li><code>wireguard</code> - VPN moderne et rapide</li>
+                        <li><code>stunnel</code> - Tunnel SSL/TLS</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">VPN</span>
+                    <span class="tag">Tunnel</span>
+                    <span class="tag">WireGuard</span>
+                </div>
+            </div>
+
+            <!-- Astuce Sauvegarde Automatisée -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-save"></i> Sauvegarde Automatisée</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Stratégies de sauvegarde robustes pour protéger vos données.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>rsync -avz --delete source/ destination/</code> - Sync incrémentale</li>
+                        <li><code>tar -czf backup-$(date +%Y%m%d).tar.gz /home</code> - Archive datée</li>
+                        <li><code>duplicity /home file:///backup</code> - Sauvegarde chiffrée</li>
+                        <li><code>borgbackup</code> - Sauvegarde déduplication</li>
+                        <li><code>rclone sync local remote:</code> - Sync cloud</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Backup</span>
+                    <span class="tag">Rsync</span>
+                    <span class="tag">Cloud</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows Batch -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-file-code"></i> Scripts Batch Utiles</h3>
+                    <span class="difficulty easy">Facile</span>
+                </div>
+                <p>Scripts batch pratiques pour automatiser les tâches Windows courantes.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>@echo off</code> - Masquer commandes dans script</li>
+                        <li><code>if exist "file.txt" echo File found</code> - Test existence fichier</li>
+                        <li><code>for /f %%i in (file.txt) do echo %%i</code> - Lire fichier ligne par ligne</li>
+                        <li><code>timeout /t 5</code> - Pause de 5 secondes</li>
+                        <li><code>start "" "program.exe"</code> - Lancer programme</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Batch</span>
+                    <span class="tag">Scripts</span>
+                    <span class="tag">CMD</span>
+                </div>
+            </div>
+
+            <!-- Astuce Reverse Engineering -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-code"></i> Reverse Engineering</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Outils d'analyse et de rétro-ingénierie pour comprendre les binaires.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>objdump -d binary</code> - Désassemblage binaire</li>
+                        <li><code>gdb ./program</code> - Débogueur GNU</li>
+                        <li><code>radare2 binary</code> - Framework d'analyse</li>
+                        <li><code>ltrace ./program</code> - Tracer appels bibliothèques</li>
+                        <li><code>strace ./program</code> - Tracer appels système</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Reverse</span>
+                    <span class="tag">GDB</span>
+                    <span class="tag">Analyse</span>
+                </div>
+            </div>
+
+            <!-- Astuce Load Balancing -->
+            <div class="astuce-card" data-category="network">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-balance-scale"></i> Load Balancing - HAProxy</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Configurez la répartition de charge pour vos applications web.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>haproxy -f /etc/haproxy/haproxy.cfg</code> - Démarrer HAProxy</li>
+                        <li><code>haproxy -f config.cfg -c</code> - Vérifier configuration</li>
+                        <li><code>echo "show stat" | socat stdio /var/run/haproxy.sock</code> - Statistiques</li>
+                        <li><code>balance roundrobin</code> - Algorithme round-robin</li>
+                        <li><code>option httpchk GET /health</code> - Health check HTTP</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">HAProxy</span>
+                    <span class="tag">Load Balancer</span>
+                    <span class="tag">High Availability</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows Active Directory -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-windows"></i> Active Directory - Gestion Avancée</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Commandes PowerShell essentielles pour administrer Active Directory efficacement.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>Get-ADUser -Filter * -Properties LastLogonDate</code> - Dernière connexion
+                            utilisateurs</li>
+                        <li><code>Get-ADComputer -Filter {OperatingSystem -like "*Windows 10*"}</code> - PC Windows 10
+                        </li>
+                        <li><code>New-ADUser -Name "John Doe" -SamAccountName "jdoe"</code> - Créer utilisateur</li>
+                        <li><code>Get-ADGroup -Filter * | Where-Object {$_.GroupScope -eq "Global"}</code> - Groupes
+                            globaux</li>
+                        <li><code>Search-ADAccount -AccountDisabled</code> - Comptes désactivés</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Active Directory</span>
+                    <span class="tag">PowerShell</span>
+                    <span class="tag">Utilisateurs</span>
+                </div>
+            </div>
+
+            <!-- Astuce Linux Systemd -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-linux"></i> Systemd - Maîtrise Complète</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Gérez vos services Linux avec systemd comme un expert système.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>systemctl list-units --failed</code> - Services en échec</li>
+                        <li><code>journalctl -u nginx.service -f</code> - Logs service en temps réel</li>
+                        <li><code>systemctl edit nginx.service</code> - Modifier configuration service</li>
+                        <li><code>systemctl mask apache2.service</code> - Désactiver définitivement</li>
+                        <li><code>systemd-analyze blame</code> - Temps de démarrage par service</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Systemd</span>
+                    <span class="tag">Services</span>
+                    <span class="tag">Journalctl</span>
+                </div>
+            </div>
+
+            <!-- Astuce Cloud AWS -->
+            <div class="astuce-card" data-category="cloud">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-aws"></i> AWS CLI - Commandes Essentielles</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Gérez votre infrastructure AWS directement depuis la ligne de commande.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>aws ec2 describe-instances --query 'Reservations[].Instances[].[InstanceId,State.Name]'</code>
+                            - Lister instances EC2</li>
+                        <li><code>aws s3 sync ./local-folder s3://bucket-name --delete</code> - Synchroniser S3</li>
+                        <li><code>aws logs tail /aws/lambda/function-name --follow</code> - Logs Lambda temps réel</li>
+                        <li><code>aws iam list-users --output table</code> - Utilisateurs IAM format tableau</li>
+                        <li><code>aws cloudformation describe-stacks --stack-name my-stack</code> - Info stack
+                            CloudFormation</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">AWS</span>
+                    <span class="tag">Cloud</span>
+                    <span class="tag">CLI</span>
+                </div>
+            </div>
+
+            <!-- Astuce DevOps CI/CD -->
+            <div class="astuce-card" data-category="devops">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-infinity"></i> CI/CD - Pipeline GitLab</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Automatisez vos déploiements avec des pipelines CI/CD professionnels.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>gitlab-runner register</code> - Enregistrer runner GitLab</li>
+                        <li><code>docker build -t app:$CI_COMMIT_SHA .</code> - Build avec tag commit</li>
+                        <li><code>kubectl set image deployment/app app=app:$CI_COMMIT_SHA</code> - Déployer sur K8s</li>
+                        <li><code>helm upgrade --install app ./chart --set image.tag=$CI_COMMIT_SHA</code> - Déploiement
+                            Helm</li>
+                        <li><code>gitlab-ci-multi-runner verify</code> - Vérifier runners</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">GitLab</span>
+                    <span class="tag">CI/CD</span>
+                    <span class="tag">Docker</span>
+                </div>
+            </div>
+
+            <!-- Astuce Terraform -->
+            <div class="astuce-card" data-category="devops">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-layer-group"></i> Terraform - Infrastructure as Code</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Gérez votre infrastructure cloud avec Terraform de manière déclarative.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>terraform init</code> - Initialiser projet Terraform</li>
+                        <li><code>terraform plan -out=tfplan</code> - Planifier changements</li>
+                        <li><code>terraform apply tfplan</code> - Appliquer changements</li>
+                        <li><code>terraform state list</code> - Lister ressources dans state</li>
+                        <li><code>terraform destroy -auto-approve</code> - Détruire infrastructure</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Terraform</span>
+                    <span class="tag">IaC</span>
+                    <span class="tag">Cloud</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows GPO -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-users-cog"></i> GPO - Stratégies de Groupe</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Maîtrisez les stratégies de groupe pour gérer votre parc Windows.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>gpmc.msc</code> - Console de gestion des stratégies de groupe</li>
+                        <li><code>gpupdate /force</code> - Forcer mise à jour GPO</li>
+                        <li><code>gpresult /r</code> - Résultat stratégies appliquées</li>
+                        <li><code>rsop.msc</code> - Jeu de stratégies résultant</li>
+                        <li><code>Get-GPO -All | Where-Object {$_.GpoStatus -eq "AllSettingsDisabled"}</code> - GPO
+                            désactivées</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">GPO</span>
+                    <span class="tag">Stratégies</span>
+                    <span class="tag">Domaine</span>
+                </div>
+            </div>
+
+            <!-- Astuce Linux LVM -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-hdd"></i> LVM - Gestion Volumes Logiques</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Gérez l'espace disque de manière flexible avec LVM.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>pvcreate /dev/sdb1</code> - Créer volume physique</li>
+                        <li><code>vgcreate vg_data /dev/sdb1 /dev/sdc1</code> - Créer groupe de volumes</li>
+                        <li><code>lvcreate -L 10G -n lv_mysql vg_data</code> - Créer volume logique</li>
+                        <li><code>lvextend -L +5G /dev/vg_data/lv_mysql</code> - Étendre volume</li>
+                        <li><code>resize2fs /dev/vg_data/lv_mysql</code> - Redimensionner système fichiers</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">LVM</span>
+                    <span class="tag">Stockage</span>
+                    <span class="tag">Volumes</span>
+                </div>
+            </div>
+
+            <!-- Astuce Sécurité SIEM -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-eye"></i> SIEM - Détection d'Intrusions</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Surveillez votre infrastructure avec des outils SIEM professionnels.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>splunk search "error" earliest=-1h</code> - Recherche Splunk dernière heure</li>
+                        <li><code>logstash -f /etc/logstash/conf.d/</code> - Démarrer Logstash</li>
+                        <li><code>curl -X GET "localhost:9200/_cat/indices"</code> - Indices Elasticsearch</li>
+                        <li><code>ossec-control start</code> - Démarrer OSSEC HIDS</li>
+                        <li><code>suricata -c /etc/suricata/suricata.yaml -i eth0</code> - IDS Suricata</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">SIEM</span>
+                    <span class="tag">ELK</span>
+                    <span class="tag">Splunk</span>
+                </div>
+            </div>
+
+            <!-- Astuce Ansible -->
+            <div class="astuce-card" data-category="devops">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-robot"></i> Ansible - Automatisation</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Automatisez la configuration de vos serveurs avec Ansible.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>ansible-playbook -i inventory playbook.yml</code> - Exécuter playbook</li>
+                        <li><code>ansible all -m ping</code> - Tester connectivité tous les hosts</li>
+                        <li><code>ansible-vault create secrets.yml</code> - Créer fichier chiffré</li>
+                        <li><code>ansible-galaxy install geerlingguy.nginx</code> - Installer rôle</li>
+                        <li><code>ansible-playbook --check playbook.yml</code> - Mode dry-run</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Ansible</span>
+                    <span class="tag">Automatisation</span>
+                    <span class="tag">Configuration</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows WSUS -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-download"></i> WSUS - Gestion des Mises à Jour</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Centralisez la gestion des mises à jour Windows avec WSUS.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>wsusutil.exe reset</code> - Réinitialiser WSUS</li>
+                        <li><code>Get-WsusUpdate | Where-Object {$_.UpdateClassificationTitle -eq "Critical Updates"}</code>
+                            - MAJ critiques</li>
+                        <li><code>wuauclt /detectnow</code> - Forcer détection mises à jour</li>
+                        <li><code>Get-WsusComputer | Where-Object {$_.LastSyncTime -lt (Get-Date).AddDays(-7)}</code> -
+                            PC non synchronisés</li>
+                        <li><code>wsusutil.exe export export.xml.gz export.log</code> - Exporter configuration</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">WSUS</span>
+                    <span class="tag">Updates</span>
+                    <span class="tag">Patch Management</span>
+                </div>
+            </div>
+
+            <!-- Astuce Prometheus Monitoring -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-chart-line"></i> Prometheus - Monitoring Moderne</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Surveillez vos applications et infrastructure avec Prometheus et Grafana.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>prometheus --config.file=prometheus.yml</code> - Démarrer Prometheus</li>
+                        <li><code>up{job="node-exporter"}</code> - Query PromQL disponibilité</li>
+                        <li><code>rate(http_requests_total[5m])</code> - Taux requêtes HTTP sur 5min</li>
+                        <li><code>node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes</code> - % RAM disponible
+                        </li>
+                        <li><code>alertmanager --config.file=alertmanager.yml</code> - Gestionnaire alertes</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Prometheus</span>
+                    <span class="tag">Grafana</span>
+                    <span class="tag">Métriques</span>
+                </div>
+            </div>
+
+            <!-- Astuce Elasticsearch -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-search"></i> Elasticsearch - Recherche et Analyse</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Maîtrisez Elasticsearch pour l'indexation et la recherche de données.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>curl -X GET "localhost:9200/_cluster/health?pretty"</code> - Santé cluster</li>
+                        <li><code>curl -X PUT "localhost:9200/logs/_doc/1" -H 'Content-Type: application/json' -d '{"message":"test"}'</code>
+                            - Indexer document</li>
+                        <li><code>curl -X GET "localhost:9200/logs/_search?q=error"</code> - Recherche simple</li>
+                        <li><code>curl -X DELETE "localhost:9200/old-logs"</code> - Supprimer index</li>
+                        <li><code>curl -X POST "localhost:9200/_reindex" -H 'Content-Type: application/json' -d '{"source":{"index":"old"},"dest":{"index":"new"}}'</code>
+                            - Réindexer</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Elasticsearch</span>
+                    <span class="tag">Search</span>
+                    <span class="tag">Big Data</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows Hyper-V -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-server"></i> Hyper-V - Virtualisation Windows</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Gérez vos machines virtuelles Hyper-V avec PowerShell.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>Get-VM</code> - Lister toutes les VMs</li>
+                        <li><code>New-VM -Name "TestVM" -MemoryStartupBytes 2GB -NewVHDPath "C:\VMs\TestVM.vhdx" -NewVHDSizeBytes 50GB</code>
+                            - Créer VM</li>
+                        <li><code>Start-VM -Name "TestVM"</code> - Démarrer VM</li>
+                        <li><code>Get-VMSnapshot -VMName "TestVM"</code> - Lister snapshots</li>
+                        <li><code>Export-VM -Name "TestVM" -Path "C:\Export\"</code> - Exporter VM</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Hyper-V</span>
+                    <span class="tag">Virtualisation</span>
+                    <span class="tag">PowerShell</span>
+                </div>
+            </div>
+
+            <!-- Astuce Redis -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-database"></i> Redis - Cache Haute Performance</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Optimisez vos applications avec Redis comme cache et base de données NoSQL.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>redis-cli ping</code> - Tester connexion Redis</li>
+                        <li><code>redis-cli info memory</code> - Utilisation mémoire</li>
+                        <li><code>redis-cli --latency</code> - Mesurer latence</li>
+                        <li><code>redis-cli monitor</code> - Surveiller commandes en temps réel</li>
+                        <li><code>redis-cli bgsave</code> - Sauvegarde en arrière-plan</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Redis</span>
+                    <span class="tag">Cache</span>
+                    <span class="tag">NoSQL</span>
+                </div>
+            </div>
+
+            <!-- Astuce Zabbix -->
+            <div class="astuce-card" data-category="network">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-heartbeat"></i> Zabbix - Supervision Infrastructure</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Surveillez votre infrastructure IT avec Zabbix de manière professionnelle.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>zabbix_agentd -c /etc/zabbix/zabbix_agentd.conf</code> - Démarrer agent</li>
+                        <li><code>zabbix_get -s 192.168.1.100 -k system.cpu.load[all,avg1]</code> - Tester métrique</li>
+                        <li><code>zabbix_sender -z zabbix-server -s hostname -k custom.metric -o 42</code> - Envoyer
+                            métrique custom</li>
+                        <li><code>systemctl status zabbix-server</code> - Status serveur Zabbix</li>
+                        <li><code>tail -f /var/log/zabbix/zabbix_server.log</code> - Logs serveur</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Zabbix</span>
+                    <span class="tag">Supervision</span>
+                    <span class="tag">Alertes</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows Event Forwarding -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-share-alt"></i> Windows Event Forwarding</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Centralisez la collecte des logs Windows pour la sécurité et la conformité.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>wecutil qc</code> - Configurer collecteur d'événements</li>
+                        <li><code>winrm quickconfig</code> - Configuration WinRM</li>
+                        <li><code>wevtutil gl ForwardedEvents</code> - Propriétés log transféré</li>
+                        <li><code>Get-WinEvent -LogName "ForwardedEvents" -MaxEvents 100</code> - Lire événements
+                            transférés</li>
+                        <li><code>wecutil gs "subscription-name"</code> - Status abonnement</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Event Forwarding</span>
+                    <span class="tag">Logs</span>
+                    <span class="tag">Centralisation</span>
+                </div>
+            </div>
+
+            <!-- Astuce Nagios -->
+            <div class="astuce-card" data-category="network">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-bell"></i> Nagios - Monitoring Classique</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Surveillez vos services et équipements réseau avec Nagios.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>nagios -v /etc/nagios/nagios.cfg</code> - Vérifier configuration</li>
+                        <li><code>systemctl reload nagios</code> - Recharger configuration</li>
+                        <li><code>/usr/lib/nagios/plugins/check_http -H google.com</code> - Test plugin HTTP</li>
+                        <li><code>nagios -s /var/log/nagios/nagios.log</code> - Statistiques depuis log</li>
+                        <li><code>echo "SCHEDULE_FORCED_HOST_CHECK;hostname;$(date +%s)" > /var/lib/nagios/rw/nagios.cmd</code>
+                            - Forcer check</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Nagios</span>
+                    <span class="tag">Monitoring</span>
+                    <span class="tag">Plugins</span>
+                </div>
+            </div>
+
+            <!-- Astuce pfSense -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-shield-virus"></i> pfSense - Firewall Open Source</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Sécurisez votre réseau avec pfSense, la solution firewall professionnelle.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>pfctl -f /etc/pf.conf</code> - Recharger règles firewall</li>
+                        <li><code>pfctl -s rules</code> - Afficher règles actives</li>
+                        <li><code>pfctl -s states</code> - Connexions actives</li>
+                        <li><code>tcpdump -i pflog0</code> - Capturer trafic bloqué</li>
+                        <li><code>pfctl -t blocklist -T show</code> - Afficher table de blocage</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">pfSense</span>
+                    <span class="tag">Firewall</span>
+                    <span class="tag">Réseau</span>
+                </div>
+            </div>
+
+            <!-- Astuce Proxmox -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-cubes"></i> Proxmox - Virtualisation Complète</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Gérez vos VMs et conteneurs avec Proxmox VE en ligne de commande.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>qm list</code> - Lister toutes les VMs</li>
+                        <li><code>pct list</code> - Lister tous les conteneurs LXC</li>
+                        <li><code>qm start 100</code> - Démarrer VM ID 100</li>
+                        <li><code>qm snapshot 100 before-update</code> - Créer snapshot</li>
+                        <li><code>pvesm status</code> - Status stockage</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Proxmox</span>
+                    <span class="tag">KVM</span>
+                    <span class="tag">LXC</span>
+                </div>
+            </div>
+
+            <!-- Astuce Kubernetes Advanced -->
+            <div class="astuce-card" data-category="devops">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-dharmachakra"></i> Kubernetes - Administration Avancée</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Maîtrisez Kubernetes comme un expert DevOps avec ces commandes essentielles.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>kubectl get pods --all-namespaces -o wide</code> - Tous les pods avec détails</li>
+                        <li><code>kubectl top nodes</code> - Utilisation ressources par nœud</li>
+                        <li><code>kubectl drain node-01 --ignore-daemonsets</code> - Vider un nœud</li>
+                        <li><code>kubectl rollout restart deployment/app</code> - Redémarrer déploiement</li>
+                        <li><code>kubectl get events --sort-by=.metadata.creationTimestamp</code> - Événements triés
+                        </li>
+                        <li><code>kubectl exec -it pod-name -- /bin/bash</code> - Shell dans pod</li>
+                        <li><code>kubectl port-forward svc/service-name 8080:80</code> - Port forwarding</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">Kubectl</span>
+                    <span class="tag">Orchestration</span>
+                </div>
+            </div>
+
+            <!-- Astuce Docker Swarm -->
+            <div class="astuce-card" data-category="devops">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-docker"></i> Docker Swarm - Orchestration Native</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Orchestrez vos conteneurs avec Docker Swarm pour une haute disponibilité.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>docker swarm init --advertise-addr 192.168.1.100</code> - Initialiser swarm</li>
+                        <li><code>docker service create --replicas 3 --name web nginx</code> - Créer service</li>
+                        <li><code>docker service scale web=5</code> - Scaler service</li>
+                        <li><code>docker service logs -f web</code> - Logs service en temps réel</li>
+                        <li><code>docker node ls</code> - Lister nœuds du cluster</li>
+                        <li><code>docker stack deploy -c docker-compose.yml myapp</code> - Déployer stack</li>
+                        <li><code>docker service update --image nginx:alpine web</code> - Mettre à jour service</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Docker</span>
+                    <span class="tag">Swarm</span>
+                    <span class="tag">Clustering</span>
+                </div>
+            </div>
+
+            <!-- Astuce Exchange Server -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-envelope"></i> Exchange Server - Administration</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Administrez Exchange Server efficacement avec PowerShell.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>Get-Mailbox -ResultSize Unlimited | Get-MailboxStatistics</code> - Statistiques boîtes
+                            mail</li>
+                        <li><code>New-Mailbox -Name "John Doe" -UserPrincipalName john@domain.com</code> - Créer boîte
+                            mail</li>
+                        <li><code>Get-MessageTrackingLog -Recipients "user@domain.com"</code> - Tracer emails</li>
+                        <li><code>Test-MAPIConnectivity -Database "Mailbox Database"</code> - Tester connectivité MAPI
+                        </li>
+                        <li><code>Get-Queue | Where-Object {$_.MessageCount -gt 0}</code> - Files d'attente non vides
+                        </li>
+                        <li><code>Export-Mailbox -Identity user@domain.com -PSTFolderPath C:\Export\</code> - Exporter
+                            PST</li>
+                        <li><code>Get-TransportRule | Where-Object {$_.State -eq "Enabled"}</code> - Règles transport
+                            actives</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Exchange</span>
+                    <span class="tag">Email</span>
+                    <span class="tag">PowerShell</span>
+                </div>
+            </div>
+
+            <!-- Astuce Nginx Advanced -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-server"></i> Nginx - Configuration Avancée</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Optimisez Nginx pour des performances et une sécurité maximales.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>nginx -t</code> - Tester configuration</li>
+                        <li><code>nginx -s reload</code> - Recharger sans interruption</li>
+                        <li><code>tail -f /var/log/nginx/access.log | grep "404"</code> - Surveiller erreurs 404</li>
+                        <li><code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx.key -out nginx.crt</code>
+                            - Générer certificat SSL</li>
+                        <li><code>curl -H "Host: example.com" http://localhost</code> - Tester virtual host</li>
+                        <li><code>ab -n 1000 -c 10 http://localhost/</code> - Test de charge Apache Bench</li>
+                        <li><code>nginx -V 2>&1 | grep -o with-[a-z_]*</code> - Modules compilés</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Nginx</span>
+                    <span class="tag">Web Server</span>
+                    <span class="tag">SSL</span>
+                </div>
+            </div>
+
+            <!-- Astuce Azure CLI -->
+            <div class="astuce-card" data-category="cloud">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-microsoft"></i> Azure CLI - Cloud Microsoft</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Gérez vos ressources Azure depuis la ligne de commande.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>az login</code> - Connexion Azure</li>
+                        <li><code>az vm list --output table</code> - Lister VMs format tableau</li>
+                        <li><code>az vm start --name myVM --resource-group myRG</code> - Démarrer VM</li>
+                        <li><code>az storage account list --query "[].{Name:name,Location:location}"</code> - Comptes
+                            stockage</li>
+                        <li><code>az webapp log tail --name myapp --resource-group myRG</code> - Logs Web App temps réel
+                        </li>
+                        <li><code>az aks get-credentials --resource-group myRG --name myAKS</code> - Config kubectl pour
+                            AKS</li>
+                        <li><code>az monitor metrics list --resource myVM --metric "Percentage CPU"</code> - Métriques
+                            VM</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Azure</span>
+                    <span class="tag">Cloud</span>
+                    <span class="tag">Microsoft</span>
+                </div>
+            </div>
+
+            <!-- Astuce Jenkins CI/CD -->
+            <div class="astuce-card" data-category="devops">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-tools"></i> Jenkins - Pipeline Automation</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Automatisez vos déploiements avec Jenkins et les pipelines as code.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>java -jar jenkins-cli.jar -s http://localhost:8080/ build job-name</code> - Déclencher
+                            build</li>
+                        <li><code>curl -X POST http://localhost:8080/job/myjob/build --user admin:token</code> - Build
+                            via API</li>
+                        <li><code>jenkins-cli.jar list-jobs</code> - Lister tous les jobs</li>
+                        <li><code>docker run -p 8080:8080 jenkins/jenkins:lts</code> - Jenkins en conteneur</li>
+                        <li><code>jenkins-cli.jar install-plugin git</code> - Installer plugin</li>
+                        <li><code>curl http://localhost:8080/api/json?pretty=true</code> - API Jenkins</li>
+                        <li><code>jenkins-cli.jar safe-restart</code> - Redémarrage sécurisé</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Jenkins</span>
+                    <span class="tag">CI/CD</span>
+                    <span class="tag">Automation</span>
+                </div>
+            </div>
+
+            <!-- Astuce Penetration Testing -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-user-ninja"></i> Penetration Testing - Kali Linux</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Tests d'intrusion éthiques avec les outils Kali Linux.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>nmap -sS -O -v target.com</code> - Scan SYN avec OS detection</li>
+                        <li><code>nikto -h http://target.com</code> - Scanner vulnérabilités web</li>
+                        <li><code>sqlmap -u "http://target.com/page?id=1" --dbs</code> - Test injection SQL</li>
+                        <li><code>hydra -l admin -P passwords.txt ssh://target.com</code> - Brute force SSH</li>
+                        <li><code>metasploit-framework</code> - Framework exploitation</li>
+                        <li><code>dirb http://target.com /usr/share/dirb/wordlists/common.txt</code> - Énumération
+                            répertoires</li>
+                        <li><code>john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt</code> - Cassage hash</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Pentest</span>
+                    <span class="tag">Kali Linux</span>
+                    <span class="tag">Ethical Hacking</span>
+                </div>
+            </div>
+
+            <!-- Astuce MySQL/MariaDB Tuning -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-database"></i> MySQL - Optimisation Avancée</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Optimisez vos bases de données MySQL/MariaDB pour des performances maximales.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>SHOW PROCESSLIST;</code> - Processus actifs</li>
+                        <li><code>SHOW ENGINE INNODB STATUS\G</code> - Status moteur InnoDB</li>
+                        <li><code>SELECT * FROM information_schema.INNODB_BUFFER_POOL_STATS;</code> - Stats buffer pool
+                        </li>
+                        <li><code>mysqltuner</code> - Script d'optimisation automatique</li>
+                        <li><code>EXPLAIN SELECT * FROM table WHERE condition;</code> - Analyser requête</li>
+                        <li><code>SHOW VARIABLES LIKE 'innodb_buffer_pool_size';</code> - Taille buffer pool</li>
+                        <li><code>pt-query-digest /var/log/mysql/slow.log</code> - Analyser slow queries</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Database</span>
+                    <span class="tag">Performance</span>
+                </div>
+            </div>
+
+            <!-- Astuce VLAN Configuration -->
+            <div class="astuce-card" data-category="network">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-network-wired"></i> VLAN - Segmentation Réseau</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Configurez et gérez les VLANs pour segmenter votre réseau efficacement.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>vconfig add eth0 10</code> - Créer interface VLAN 10</li>
+                        <li><code>ip link add link eth0 name eth0.20 type vlan id 20</code> - VLAN avec iproute2</li>
+                        <li><code>bridge vlan add vid 30 dev eth0</code> - Ajouter VLAN au bridge</li>
+                        <li><code>tcpdump -i eth0.10</code> - Capturer trafic VLAN spécifique</li>
+                        <li><code>show vlan brief</code> - Cisco : afficher VLANs</li>
+                        <li><code>switchport mode trunk</code> - Cisco : mode trunk</li>
+                        <li><code>vlan database</code> - Cisco : base de données VLAN</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">VLAN</span>
+                    <span class="tag">Switching</span>
+                    <span class="tag">Segmentation</span>
+                </div>
+            </div>
+
+            <!-- Astuce Grafana Dashboards -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-chart-area"></i> Grafana - Dashboards Avancés</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Créez des dashboards Grafana professionnels pour visualiser vos métriques.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>grafana-cli plugins install grafana-piechart-panel</code> - Installer plugin</li>
+                        <li><code>curl -X POST http://admin:admin@localhost:3000/api/dashboards/db</code> - API
+                            dashboard</li>
+                        <li><code>grafana-cli admin reset-admin-password newpassword</code> - Reset mot de passe admin
+                        </li>
+                        <li><code>systemctl status grafana-server</code> - Status service Grafana</li>
+                        <li><code>tail -f /var/log/grafana/grafana.log</code> - Logs Grafana</li>
+                        <li><code>grafana-cli plugins list-remote</code> - Plugins disponibles</li>
+                        <li><code>curl http://localhost:3000/api/health</code> - Health check API</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Grafana</span>
+                    <span class="tag">Visualization</span>
+                    <span class="tag">Dashboards</span>
+                </div>
+            </div>
+
+            <!-- Astuce PowerShell DSC -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-cogs"></i> PowerShell DSC - Configuration Management</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Gérez la configuration de vos serveurs Windows avec PowerShell DSC.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>Configuration WebServer { Node "Server01" { WindowsFeature IIS { Name = "IIS-WebServerRole"; Ensure = "Present" } } }</code>
+                            - Config DSC</li>
+                        <li><code>Start-DscConfiguration -Path .\WebServer -Wait -Verbose</code> - Appliquer
+                            configuration</li>
+                        <li><code>Get-DscConfiguration</code> - Configuration actuelle</li>
+                        <li><code>Test-DscConfiguration</code> - Tester conformité</li>
+                        <li><code>Get-DscResource</code> - Ressources DSC disponibles</li>
+                        <li><code>Set-DscLocalConfigurationManager -Path .\LCM</code> - Configurer LCM</li>
+                        <li><code>Get-DscConfigurationStatus</code> - Status dernière configuration</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">PowerShell DSC</span>
+                    <span class="tag">Configuration</span>
+                    <span class="tag">Automation</span>
+                </div>
+            </div>
+
+            <!-- Astuce Wireshark Network Analysis -->
+            <div class="astuce-card" data-category="network">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-search"></i> Wireshark - Analyse Réseau</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Analysez le trafic réseau comme un expert avec Wireshark.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>tshark -i eth0 -w capture.pcap</code> - Capture en ligne de commande</li>
+                        <li><code>tshark -r capture.pcap -Y "http.request.method==GET"</code> - Filtrer requêtes GET
+                        </li>
+                        <li><code>tcpdump -i any -w capture.pcap host 192.168.1.100</code> - Capturer trafic host
+                            spécifique</li>
+                        <li><code>tshark -r capture.pcap -T fields -e ip.src -e ip.dst</code> - Extraire IPs
+                            source/destination</li>
+                        <li><code>capinfos capture.pcap</code> - Informations fichier capture</li>
+                        <li><code>mergecap -w merged.pcap file1.pcap file2.pcap</code> - Fusionner captures</li>
+                        <li><code>editcap -A "2023-01-01 00:00:00" capture.pcap filtered.pcap</code> - Filtrer par date
+                        </li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Wireshark</span>
+                    <span class="tag">Network Analysis</span>
+                    <span class="tag">Troubleshooting</span>
+                </div>
+            </div>
+
+            <!-- Astuce Bash Scripting Advanced -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-terminal"></i> Bash Scripting - Techniques Avancées</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Maîtrisez les techniques avancées de scripting Bash pour l'automatisation.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>#!/bin/bash -e</code> - Script qui s'arrête à la première erreur</li>
+                        <li><code>exec > >(tee -a logfile.log)</code> - Rediriger stdout vers fichier et console</li>
+                        <li><code>trap 'echo "Script interrupted"; exit 1' INT TERM</code> - Gérer signaux</li>
+                        <li><code>while IFS= read -r line; do echo "$line"; done < file.txt</code> - Lire fichier ligne
+                            par ligne</li>
+                        <li><code>find /path -name "*.log" -exec grep -l "ERROR" {} \;</code> - Find avec exec</li>
+                        <li><code>parallel -j 4 command {} ::: arg1 arg2 arg3 arg4</code> - Exécution parallèle</li>
+                        <li><code>timeout 30s command</code> - Limiter temps d'exécution</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Bash</span>
+                    <span class="tag">Scripting</span>
+                    <span class="tag">Automation</span>
+                </div>
+            </div>
+
+            <!-- Astuce Splunk Advanced -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-chart-line"></i> Splunk - Recherches Avancées</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Exploitez la puissance de Splunk pour l'analyse de logs et la sécurité.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>index=security sourcetype=firewall | stats count by src_ip | sort -count</code> - Top
+                            IPs par connexions</li>
+                        <li><code>| inputlookup threat_intel.csv | lookup threat_intel.csv ip as src_ip OUTPUT threat_level</code>
+                            - Enrichissement threat intel</li>
+                        <li><code>index=web_logs | rex field=_raw "(?&lt;response_time&gt;\d+)ms" | stats avg(response_time) by host</code>
+                            - Temps réponse moyen</li>
+                        <li><code>| tstats count where index=security by _time span=1h | timechart span=1h count</code>
+                            - Timeline événements</li>
+                        <li><code>index=windows EventCode=4625 | stats count by Account_Name | sort -count</code> -
+                            Échecs authentification</li>
+                        <li><code>| makeresults | eval alert_time=now() | outputlookup alerts.csv append=true</code> -
+                            Créer alerte</li>
+                        <li><code>| rest /services/data/indexes | table title totalEventCount</code> - Stats index via
+                            REST API</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Splunk</span>
+                    <span class="tag">SIEM</span>
+                    <span class="tag">Log Analysis</span>
+                </div>
+            </div>
+
+            <!-- Astuce Google Cloud Platform -->
+            <div class="astuce-card" data-category="cloud">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-google"></i> Google Cloud - gcloud CLI</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Gérez vos ressources Google Cloud Platform avec l'outil gcloud.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>gcloud auth login</code> - Authentification GCP</li>
+                        <li><code>gcloud compute instances list</code> - Lister instances Compute Engine</li>
+                        <li><code>gcloud container clusters get-credentials cluster-name --zone=us-central1-a</code> -
+                            Config kubectl GKE</li>
+                        <li><code>gcloud sql instances list</code> - Instances Cloud SQL</li>
+                        <li><code>gsutil cp file.txt gs://bucket-name/</code> - Upload vers Cloud Storage</li>
+                        <li><code>gcloud functions deploy my-function --runtime python39 --trigger-http</code> -
+                            Déployer Cloud Function</li>
+                        <li><code>gcloud logging read "severity>=ERROR" --limit=50</code> - Logs avec erreurs</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Google Cloud</span>
+                    <span class="tag">GCP</span>
+                    <span class="tag">gcloud</span>
+                </div>
+            </div>
+
+            <!-- Astuce Cron Jobs Advanced -->
+            <div class="astuce-card" data-category="linux">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-clock"></i> Cron - Planification Avancée</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Planifiez vos tâches automatisées avec cron de manière professionnelle.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>0 2 * * 0 /usr/local/bin/backup.sh</code> - Backup tous les dimanches à 2h</li>
+                        <li><code>*/15 * * * * /usr/bin/check-service.sh</code> - Vérification toutes les 15 minutes
+                        </li>
+                        <li><code>0 9-17 * * 1-5 /usr/bin/business-hours.sh</code> - Heures ouvrables uniquement</li>
+                        <li><code>@reboot /usr/local/bin/startup.sh</code> - Exécuter au démarrage</li>
+                        <li><code>crontab -l > cron-backup.txt</code> - Sauvegarder crontab</li>
+                        <li><code>grep CRON /var/log/syslog</code> - Logs cron</li>
+                        <li><code>run-parts --test /etc/cron.daily</code> - Tester scripts cron.daily</code></li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Cron</span>
+                    <span class="tag">Scheduling</span>
+                    <span class="tag">Automation</span>
+                </div>
+            </div>
+
+            <!-- Astuce SQL Server Administration -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-database"></i> SQL Server - Administration T-SQL</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Administrez SQL Server efficacement avec T-SQL et PowerShell.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>SELECT name, database_id, create_date FROM sys.databases;</code> - Lister bases de
+                            données</li>
+                        <li><code>EXEC sp_who2;</code> - Processus actifs détaillés</li>
+                        <li><code>DBCC CHECKDB('DatabaseName');</code> - Vérifier intégrité base</li>
+                        <li><code>BACKUP DATABASE MyDB TO DISK = 'C:\Backup\MyDB.bak';</code> - Sauvegarde complète</li>
+                        <li><code>SELECT * FROM sys.dm_exec_query_stats ORDER BY total_elapsed_time DESC;</code> -
+                            Requêtes les plus lentes</li>
+                        <li><code>ALTER DATABASE MyDB SET RECOVERY SIMPLE;</code> - Mode de récupération simple</li>
+                        <li><code>EXEC sp_configure 'show advanced options', 1; RECONFIGURE;</code> - Options avancées
+                        </li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">SQL Server</span>
+                    <span class="tag">T-SQL</span>
+                    <span class="tag">Database</span>
+                </div>
+            </div>
+
+            <!-- Suite de l'astuce Datadog - CORRECTION -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-dog"></i> Datadog - Monitoring SaaS</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Surveillez vos applications et infrastructure avec Datadog.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>DD_API_KEY=xxx DD_SITE="datadoghq.eu" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"</code>
+                            - Installer agent</li>
+                        <li><code>sudo systemctl status datadog-agent</code> - Status agent Datadog</li>
+                        <li><code>sudo datadog-agent status</code> - Status détaillé agent</li>
+                        <li><code>curl -X POST "https://api.datadoghq.com/api/v1/series" -H "Content-Type: application/json"</code>
+                            - Envoyer métrique custom</li>
+                        <li><code>sudo datadog-agent check disk</code> - Tester check disk</li>
+                        <li><code>tail -f /var/log/datadog/agent.log</code> - Logs agent</li>
+                        <li><code>sudo datadog-agent configcheck</code> - Vérifier configuration</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Datadog</span>
+                    <span class="tag">Monitoring</span>
+                    <span class="tag">SaaS</span>
+                </div>
+            </div>
+
+            <!-- Astuce GitHub Actions -->
+            <div class="astuce-card" data-category="devops">
+                <div class="astuce-header">
+                    <h3><i class="fab fa-github"></i> GitHub Actions - CI/CD Native</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Automatisez vos workflows avec GitHub Actions directement intégré.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>gh workflow list</code> - Lister workflows GitHub CLI</li>
+                        <li><code>gh workflow run build.yml</code> - Déclencher workflow</li>
+                        <li><code>gh run list --workflow=build.yml</code> - Historique exécutions</li>
+                        <li><code>gh run view --log</code> - Voir logs dernière exécution</li>
+                        <li><code>gh api repos/:owner/:repo/actions/runs</code> - API runs</li>
+                        <li><code>gh secret set API_KEY --body "secret-value"</code> - Définir secret</li>
+                        <li><code>gh workflow disable build.yml</code> - Désactiver workflow</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">CI/CD</span>
+                    <span class="tag">Git</span>
+                </div>
+            </div>
+
+            <!-- Astuce OpenVPN -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-shield-alt"></i> OpenVPN - VPN Sécurisé</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Configurez et gérez un serveur OpenVPN pour des connexions sécurisées.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>openvpn --genkey --secret static.key</code> - Générer clé statique</li>
+                        <li><code>easy-rsa build-ca</code> - Créer autorité certification</li>
+                        <li><code>easy-rsa build-key-server server</code> - Certificat serveur</li>
+                        <li><code>easy-rsa build-key client1</code> - Certificat client</li>
+                        <li><code>openvpn --config server.conf</code> - Démarrer serveur OpenVPN</li>
+                        <li><code>systemctl status openvpn@server</code> - Status service OpenVPN</li>
+                        <li><code>tail -f /var/log/openvpn/server.log</code> - Logs serveur</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">OpenVPN</span>
+                    <span class="tag">VPN</span>
+                    <span class="tag">Sécurité</span>
+                </div>
+            </div>
+
+            <!-- Astuce Fail2ban -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-ban"></i> Fail2ban - Protection Brute Force</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Protégez vos services contre les attaques par force brute avec Fail2ban.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>fail2ban-client status</code> - Status général Fail2ban</li>
+                        <li><code>fail2ban-client status sshd</code> - Status jail SSH</li>
+                        <li><code>fail2ban-client set sshd unbanip 192.168.1.100</code> - Débannir IP</li>
+                        <li><code>fail2ban-client reload</code> - Recharger configuration</li>
+                        <li><code>tail -f /var/log/fail2ban.log</code> - Logs Fail2ban</li>
+                        <li><code>fail2ban-client set sshd banip 192.168.1.100</code> - Bannir IP manuellement</li>
+                        <li><code>iptables -L f2b-sshd</code> - Règles iptables Fail2ban SSH</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Fail2ban</span>
+                    <span class="tag">Brute Force</span>
+                    <span class="tag">Protection</span>
+                </div>
+            </div>
+
+            <!-- Astuce Load Balancing HAProxy -->
+            <div class="astuce-card" data-category="network">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-balance-scale"></i> HAProxy - Load Balancing</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Répartissez la charge avec HAProxy pour une haute disponibilité.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>haproxy -f /etc/haproxy/haproxy.cfg -c</code> - Tester configuration</li>
+                        <li><code>systemctl reload haproxy</code> - Recharger sans interruption</li>
+                        <li><code>echo "show stat" | socat stdio /var/run/haproxy/admin.sock</code> - Statistiques via
+                            socket</li>
+                        <li><code>echo "disable server backend/server1" | socat stdio /var/run/haproxy/admin.sock</code>
+                            - Désactiver serveur</li>
+                        <li><code>curl -H "Host: example.com" http://localhost/</code> - Tester load balancing</li>
+                        <li><code>tail -f /var/log/haproxy.log</code> - Logs HAProxy</li>
+                        <li><code>echo "show info" | socat stdio /var/run/haproxy/admin.sock</code> - Informations
+                            générales</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">HAProxy</span>
+                    <span class="tag">Load Balancer</span>
+                    <span class="tag">High Availability</span>
+                </div>
+            </div>
+
+            <!-- Astuce Kernel Tuning Linux -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-microchip"></i> Linux Kernel - Optimisation</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Optimisez les performances du noyau Linux pour vos charges de travail.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>sysctl -w vm.swappiness=10</code> - Réduire utilisation swap</li>
+                        <li><code>echo 'net.core.rmem_max = 134217728' >> /etc/sysctl.conf</code> - Buffer réseau
+                            réception</li>
+                        <li><code>sysctl -w kernel.shmmax=68719476736</code> - Mémoire partagée max</li>
+                        <li><code>echo never > /sys/kernel/mm/transparent_hugepage/enabled</code> - Désactiver THP</li>
+                        <li><code>sysctl -w fs.file-max=2097152</code> - Nombre max fichiers ouverts</li>
+                        <li><code>ulimit -n 65536</code> - Limite fichiers par processus</li>
+                        <li><code>sysctl -p</code> - Appliquer paramètres sysctl.conf</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Kernel</span>
+                    <span class="tag">Performance</span>
+                    <span class="tag">Tuning</span>
+                </div>
+            </div>
+
+            <!-- Astuce Incident Response -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Incident Response - Forensic</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Techniques de réponse aux incidents et d'investigation numérique.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>dd if=/dev/sda of=/mnt/evidence/disk.img bs=4096 conv=noerror,sync</code> - Image
+                            disque forensic</li>
+                        <li><code>volatility -f memory.dump --profile=Win7SP1x64 pslist</code> - Analyse mémoire RAM
+                        </li>
+                        <li><code>last -f /var/log/wtmp</code> - Historique connexions utilisateurs</li>
+                        <li><code>ausearch -ts today -k file_access</code> - Audit accès fichiers</li>
+                        <li><code>netstat -tulpn | grep ESTABLISHED</code> - Connexions réseau actives</li>
+                        <li><code>find /home -type f -mtime -1 -ls</code> - Fichiers modifiés dernières 24h</li>
+                        <li><code>chkrootkit && rkhunter --check</code> - Détection rootkits</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Forensic</span>
+                    <span class="tag">Incident Response</span>
+                    <span class="tag">Investigation</span>
+                </div>
+            </div>
+
+            <!-- Astuce Apache Tuning -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-feather"></i> Apache - Optimisation Performance</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Optimisez Apache HTTP Server pour de meilleures performances.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>apache2ctl configtest</code> - Tester configuration Apache</li>
+                        <li><code>apache2ctl graceful</code> - Redémarrage gracieux</li>
+                        <li><code>ab -n 1000 -c 10 http://localhost/</code> - Test de charge Apache Bench</li>
+                        <li><code>apachectl status</code> - Status serveur Apache</li>
+                        <li><code>tail -f /var/log/apache2/access.log | grep "404"</code> - Surveiller erreurs 404</li>
+                        <li><code>a2enmod rewrite</code> - Activer module rewrite</li>
+                        <li><code>apache2ctl -M</code> - Lister modules chargés</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Apache</span>
+                    <span class="tag">Web Server</span>
+                    <span class="tag">Performance</span>
+                </div>
+            </div>
+
+            <!-- Astuce Windows Clustering -->
+            <div class="astuce-card" data-category="windows">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-server"></i> Windows Failover Clustering</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Configurez la haute disponibilité avec Windows Failover Clustering.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>Get-Cluster</code> - Informations cluster</li>
+                        <li><code>Get-ClusterNode</code> - Nœuds du cluster</li>
+                        <li><code>Test-Cluster -Node Node1,Node2</code> - Valider configuration cluster</li>
+                        <li><code>Get-ClusterResource</code> - Ressources cluster</li>
+                        <li><code>Move-ClusterGroup -Name "SQL Server" -Node Node2</code> - Déplacer groupe ressources
+                        </li>
+                        <li><code>Get-ClusterLog -Destination C:\ClusterLogs</code> - Générer logs cluster</li>
+                        <li><code>Add-ClusterNode -Name Node3</code> - Ajouter nœud au cluster</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Windows Clustering</span>
+                    <span class="tag">High Availability</span>
+                    <span class="tag">Failover</span>
+                </div>
+            </div>
+
+            <!-- Astuce New Relic Monitoring -->
+            <div class="astuce-card" data-category="performance">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-chart-bar"></i> New Relic - APM Monitoring</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Surveillez les performances applicatives avec New Relic APM.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>curl -H "Api-Key:YOUR_API_KEY" "https://api.newrelic.com/v2/applications.json"</code>
+                            - API applications</li>
+                        <li><code>newrelic-admin run-program python app.py</code> - Lancer app avec agent Python</li>
+                        <li><code>systemctl status newrelic-infra</code> - Status agent infrastructure</li>
+                        <li><code>tail -f /var/log/newrelic/newrelic_agent.log</code> - Logs agent</li>
+                        <li><code>curl -X POST "https://api.newrelic.com/v2/applications/APP_ID/deployments.json"</code>
+                            - Marquer déploiement</li>
+                        <li><code>newrelic-admin validate-config newrelic.ini</code> - Valider configuration</li>
+                        <li><code>newrelic-admin generate-config LICENSE_KEY newrelic.ini</code> - Générer config</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">New Relic</span>
+                    <span class="tag">APM</span>
+                    <span class="tag">Performance</span>
+                </div>
+            </div>
+
+            <!-- Astuce TensorFlow & ML -->
+            <div class="astuce-card" data-category="ai">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-brain"></i> TensorFlow - Machine Learning</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Déployez et optimisez vos modèles TensorFlow en production.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>tensorflow_model_server --port=8501 --model_name=my_model --model_base_path=/models/</code>
+                            - Serveur TensorFlow</li>
+                        <li><code>python -m tf2onnx.convert --saved-model /path/to/model --output model.onnx</code> -
+                            Convertir en ONNX</li>
+                        <li><code>tensorboard --logdir=./logs --host=0.0.0.0 --port=6006</code> - Lancer TensorBoard
+                        </li>
+                        <li><code>nvidia-smi</code> - Monitoring GPU NVIDIA</li>
+                        <li><code>docker run -p 8501:8501 -v /models:/models tensorflow/serving</code> - TF Serving
+                            conteneurisé</li>
+                        <li><code>python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"</code>
+                            - Vérifier GPU</li>
+                        <li><code>pip install tensorflow-gpu==2.13.0</code> - Version GPU spécifique</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">GPU</span>
+                </div>
+            </div>
+
+            <!-- Astuce PostgreSQL Advanced -->
+            <div class="astuce-card" data-category="database">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-elephant"></i> PostgreSQL - Administration Avancée</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Maîtrisez PostgreSQL pour des performances et une fiabilité optimales.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>SELECT * FROM pg_stat_activity WHERE state = 'active';</code> - Requêtes actives</li>
+                        <li><code>VACUUM ANALYZE;</code> - Maintenance base complète</li>
+                        <li><code>SELECT schemaname,tablename,attname,n_distinct,correlation FROM pg_stats;</code> -
+                            Statistiques colonnes</li>
+                        <li><code>pg_dump -h localhost -U postgres -d mydb > backup.sql</code> - Sauvegarde base</li>
+                        <li><code>SELECT * FROM pg_locks WHERE NOT granted;</code> - Verrous en attente</li>
+                        <li><code>REINDEX DATABASE mydb;</code> - Reconstruire index</li>
+                        <li><code>SELECT pg_size_pretty(pg_database_size('mydb'));</code> - Taille base de données</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Database</span>
+                    <span class="tag">Performance</span>
+                </div>
+            </div>
+
+            <!-- Astuce Helm Charts -->
+            <div class="astuce-card" data-category="devops">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-ship"></i> Helm - Package Manager K8s</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Gérez vos déploiements Kubernetes avec Helm charts.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>helm create myapp</code> - Créer nouveau chart</li>
+                        <li><code>helm install myrelease ./myapp</code> - Installer chart</li>
+                        <li><code>helm upgrade myrelease ./myapp --set image.tag=v2.0</code> - Mettre à jour release
+                        </li>
+                        <li><code>helm rollback myrelease 1</code> - Rollback vers version précédente</li>
+                        <li><code>helm list --all-namespaces</code> - Lister toutes les releases</li>
+                        <li><code>helm template myapp ./myapp --debug</code> - Générer YAML sans installer</li>
+                        <li><code>helm repo add bitnami https://charts.bitnami.com/bitnami</code> - Ajouter repository
+                        </li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Helm</span>
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">Package Manager</span>
+                </div>
+            </div>
+
+            <!-- Astuce OSINT & Threat Hunting -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-search"></i> OSINT - Threat Intelligence</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Collectez des renseignements open source pour la cybersécurité.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>whois domain.com</code> - Informations domaine</li>
+                        <li><code>dig +trace domain.com</code> - Trace DNS complète</li>
+                        <li><code>shodan search "apache 2.4"</code> - Recherche Shodan</li>
+                        <li><code>theharvester -d domain.com -l 500 -b google</code> - Collecte emails/sous-domaines
+                        </li>
+                        <li><code>maltego</code> - Analyse liens et relations</li>
+                        <li><code>recon-ng</code> - Framework reconnaissance</li>
+                        <li><code>curl -s "https://crt.sh/?q=%.domain.com&output=json"</code> - Certificats SSL</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">OSINT</span>
+                    <span class="tag">Threat Intelligence</span>
+                    <span class="tag">Reconnaissance</span>
+                </div>
+            </div>
+
+            <!-- Astuce Apache Kafka -->
+            <div class="astuce-card" data-category="bigdata">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-stream"></i> Apache Kafka - Streaming</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Gérez vos flux de données en temps réel avec Apache Kafka.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>kafka-topics.sh --create --topic mytopic --bootstrap-server localhost:9092</code> -
+                            Créer topic</li>
+                        <li><code>kafka-console-producer.sh --topic mytopic --bootstrap-server localhost:9092</code> -
+                            Producteur console</li>
+                        <li><code>kafka-console-consumer.sh --topic mytopic --from-beginning --bootstrap-server localhost:9092</code>
+                            - Consommateur</li>
+                        <li><code>kafka-topics.sh --list --bootstrap-server localhost:9092</code> - Lister topics</li>
+                        <li><code>kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</code> - Groupes
+                            consommateurs</li>
+                        <li><code>kafka-log-dirs.sh --bootstrap-server localhost:9092 --describe</code> - Répertoires
+                            logs</li>
+                        <li><code>kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic mytopic</code>
+                            - Offsets topic</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Kafka</span>
+                    <span class="tag">Streaming</span>
+                    <span class="tag">Big Data</span>
+                </div>
+            </div>
+
+            <!-- Astuce MongoDB -->
+            <div class="astuce-card" data-category="database">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-leaf"></i> MongoDB - NoSQL Database</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Administrez MongoDB pour des applications modernes scalables.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>mongo --eval "db.stats()"</code> - Statistiques base</li>
+                        <li><code>mongodump --db mydb --out /backup/</code> - Sauvegarde base</li>
+                        <li><code>mongorestore --db mydb /backup/mydb/</code> - Restaurer base</li>
+                        <li><code>db.collection.createIndex({field: 1})</code> - Créer index</li>
+                        <li><code>db.runCommand({serverStatus: 1})</code> - Status serveur</li>
+                        <li><code>mongostat --host localhost:27017</code> - Statistiques temps réel</li>
+                        <li><code>db.collection.find().explain("executionStats")</code> - Plan exécution requête</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">NoSQL</span>
+                    <span class="tag">Database</span>
+                </div>
+            </div>
+
+            <!-- Astuce VMware vSphere -->
+            <div class="astuce-card" data-category="virtualization">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-cube"></i> VMware vSphere - Virtualisation</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Administrez votre infrastructure VMware vSphere efficacement.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>esxtop</code> - Monitoring temps réel ESXi</li>
+                        <li><code>vim-cmd vmsvc/getallvms</code> - Lister toutes les VMs</li>
+                        <li><code>vim-cmd vmsvc/power.on vmid</code> - Démarrer VM</li>
+                        <li><code>esxcli system version get</code> - Version ESXi</li>
+                        <li><code>esxcli storage filesystem list</code> - Systèmes fichiers</li>
+                        <li><code>vCenter Server Appliance Management Interface</code> - Interface web VCSA</li>
+                        <li><code>esxcli network vswitch standard list</code> - Switches virtuels</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">VMware</span>
+                    <span class="tag">vSphere</span>
+                    <span class="tag">Virtualisation</span>
+                </div>
+            </div>
+
+            <!-- Astuce Redis Cluster -->
+            <div class="astuce-card" data-category="database">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-memory"></i> Redis - Cache & Database</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Optimisez Redis pour le cache haute performance et la persistance.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>redis-cli info memory</code> - Utilisation mémoire</li>
+                        <li><code>redis-cli --latency -i 1</code> - Latence temps réel</li>
+                        <li><code>redis-cli monitor</code> - Surveiller commandes</li>
+                        <li><code>redis-cli bgsave</code> - Sauvegarde background</li>
+                        <li><code>redis-cli config get maxmemory</code> - Configuration mémoire max</li>
+                        <li><code>redis-cli slowlog get 10</code> - 10 requêtes les plus lentes</li>
+                        <li><code>redis-benchmark -h localhost -p 6379 -n 100000</code> - Test performance</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Redis</span>
+                    <span class="tag">Cache</span>
+                    <span class="tag">In-Memory</span>
+                </div>
+            </div>
+
+            <!-- Astuce Raspberry Pi Cluster -->
+            <div class="astuce-card" data-category="iot">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-microchip"></i> Raspberry Pi - Cluster Computing</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Créez un cluster Raspberry Pi pour l'edge computing et l'apprentissage.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>sudo rpi-update</code> - Mettre à jour firmware</li>
+                        <li><code>vcgencmd measure_temp</code> - Température CPU</li>
+                        <li><code>sudo raspi-config</code> - Configuration système</li>
+                        <li><code>gpio readall</code> - État pins GPIO</li>
+                        <li><code>curl -sSL https://get.docker.com | sh</code> - Installer Docker sur Pi</li>
+                        <li><code>sudo systemctl enable ssh</code> - Activer SSH</li>
+                        <li><code>cat /proc/cpuinfo | grep Serial</code> - Numéro série Pi</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Raspberry Pi</span>
+                    <span class="tag">IoT</span>
+                    <span class="tag">Edge Computing</span>
+                </div>
+            </div>
+
+            <!-- Astuce Veeam Backup -->
+            <div class="astuce-card" data-category="backup">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-save"></i> Veeam - Enterprise Backup</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Gérez vos sauvegardes d'entreprise avec Veeam Backup & Replication.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>Add-PSSnapin VeeamPSSnapin</code> - Charger module PowerShell Veeam</li>
+                        <li><code>Get-VBRJob</code> - Lister jobs de sauvegarde</li>
+                        <li><code>Start-VBRJob -Job "Backup Job 01"</code> - Démarrer job</li>
+                        <li><code>Get-VBRBackupSession | Where {$_.Result -eq "Failed"}</code> - Sessions échouées</li>
+                        <li><code>Get-VBRRepository</code> - Repositories de sauvegarde</li>
+                        <li><code>Restore-VBRViVirtualMachine</code> - Restaurer VM</li>
+                        <li><code>Get-VBRViEntity -Name "VM-Name"</code> - Informations VM</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Veeam</span>
+                    <span class="tag">Backup</span>
+                    <span class="tag">Enterprise</span>
+                </div>
+            </div>
+
+            <!-- Astuce Elasticsearch -->
+            <div class="astuce-card" data-category="bigdata">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-search-plus"></i> Elasticsearch - Search Engine</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Optimisez Elasticsearch pour la recherche et l'analyse de données.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>curl -X GET "localhost:9200/_cluster/health?pretty"</code> - Santé cluster</li>
+                        <li><code>curl -X GET "localhost:9200/_cat/indices?v"</code> - Lister index</li>
+                        <li><code>curl -X POST "localhost:9200/myindex/_search" -H 'Content-Type: application/json' -d '{"query": {"match_all": {}}}'</code>
+                            - Recherche</li>
+                        <li><code>curl -X DELETE "localhost:9200/myindex"</code> - Supprimer index</li>
+                        <li><code>curl -X GET "localhost:9200/_cat/nodes?v"</code> - Nœuds cluster</li>
+                        <li><code>curl -X POST "localhost:9200/_reindex" -H 'Content-Type: application/json'</code> -
+                            Réindexer</li>
+                        <li><code>curl -X GET "localhost:9200/_cat/shards?v"</code> - État shards</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Elasticsearch</span>
+                    <span class="tag">Search</span>
+                    <span class="tag">Big Data</span>
+                </div>
+            </div>
+
+            <!-- Astuce ArgoCD GitOps -->
+            <div class="astuce-card" data-category="devops">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-git-alt"></i> ArgoCD - GitOps Deployment</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Implémentez GitOps avec ArgoCD pour des déploiements automatisés.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>kubectl create namespace argocd</code> - Créer namespace ArgoCD</li>
+                        <li><code>kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml</code>
+                            - Installer ArgoCD</li>
+                        <li><code>argocd login argocd-server.argocd.svc.cluster.local</code> - Connexion CLI</li>
+                        <li><code>argocd app create myapp --repo https://github.com/user/repo --path ./</code> - Créer
+                            application</li>
+                        <li><code>argocd app sync myapp</code> - Synchroniser application</li>
+                        <li><code>argocd app get myapp</code> - Status application</li>
+                        <li><code>kubectl port-forward svc/argocd-server -n argocd 8080:443</code> - Accès interface web
+                        </li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">ArgoCD</span>
+                    <span class="tag">GitOps</span>
+                    <span class="tag">Kubernetes</span>
+                </div>
+            </div>
+
+            <!-- Astuce MQTT IoT -->
+            <div class="astuce-card" data-category="iot">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-wifi"></i> MQTT - IoT Messaging</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Implémentez la communication IoT avec le protocole MQTT.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>mosquitto_pub -h localhost -t "sensors/temperature" -m "25.6"</code> - Publier message
+                        </li>
+                        <li><code>mosquitto_sub -h localhost -t "sensors/+"</code> - S'abonner wildcard</li>
+                        <li><code>systemctl status mosquitto</code> - Status broker Mosquitto</li>
+                        <li><code>mosquitto_passwd -c /etc/mosquitto/passwd username</code> - Créer utilisateur</li>
+                        <li><code>tail -f /var/log/mosquitto/mosquitto.log</code> - Logs broker</li>
+                        <li><code>mosquitto_pub -h localhost -t "test" -m "hello" -q 2</code> - QoS niveau 2</li>
+                        <li><code>netstat -tulpn | grep 1883</code> - Port MQTT</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">MQTT</span>
+                    <span class="tag">IoT</span>
+                    <span class="tag">Messaging</span>
+                </div>
+            </div>
+
+            <!-- Astuce FFmpeg Media -->
+            <div class="astuce-card" data-category="media">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-video"></i> FFmpeg - Media Processing</h3>
+                    <span class="difficulty medium">Intermédiaire</span>
+                </div>
+                <p>Traitez et convertissez vos fichiers média avec FFmpeg.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>ffmpeg -i input.mp4 -c:v libx264 -crf 23 output.mp4</code> - Compression vidéo H.264
+                        </li>
+                        <li><code>ffmpeg -i input.mp4 -vf scale=1280:720 output.mp4</code> - Redimensionner vidéo</li>
+                        <li><code>ffmpeg -i input.mp4 -c copy -t 30 output.mp4</code> - Extraire 30 premières secondes
+                        </li>
+                        <li><code>ffmpeg -f v4l2 -i /dev/video0 -c:v libx264 stream.mp4</code> - Capturer webcam</li>
+                        <li><code>ffmpeg -i input.mp4 -vn -acodec mp3 output.mp3</code> - Extraire audio</li>
+                        <li><code>ffmpeg -i input.mp4 -vf "drawtext=text='Watermark':x=10:y=10" output.mp4</code> -
+                            Ajouter texte</li>
+                        <li><code>ffprobe -v quiet -print_format json -show_format input.mp4</code> - Informations
+                            fichier</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">FFmpeg</span>
+                    <span class="tag">Video</span>
+                    <span class="tag">Media</span>
+                </div>
+            </div>
+
+            <!-- Astuce Citrix XenApp -->
+            <div class="astuce-card" data-category="virtualization">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-desktop"></i> Citrix - Application Virtualization</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Administrez Citrix XenApp/XenDesktop pour la virtualisation d'applications.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>Get-BrokerSession</code> - Sessions utilisateurs actives</li>
+                        <li><code>Get-BrokerMachine | Where-Object {$_.PowerState -eq "On"}</code> - Machines allumées
+                        </li>
+                        <li><code>Publish-BrokerApplication -Name "Notepad" -CommandLineExecutable "notepad.exe"</code>
+                            - Publier application</li>
+                        <li><code>Get-BrokerApplicationInstance</code> - Instances applications</li>
+                        <li><code>Test-BrokerConnectivity</code> - Tester connectivité broker</li>
+                        <li><code>Get-LogSite</code> - Informations site Citrix</li>
+                        <li><code>Reset-BrokerMachine -MachineName "XA-001"</code> - Redémarrer machine</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Citrix</span>
+                    <span class="tag">XenApp</span>
+                    <span class="tag">Virtualization</span>
+                </div>
+            </div>
+
+            <!-- Astuce Pulumi Infrastructure -->
+            <div class="astuce-card" data-category="devops">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-code"></i> Pulumi - Modern IaC</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Gérez votre infrastructure avec Pulumi et des langages de programmation.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>pulumi new aws-python</code> - Nouveau projet AWS Python</li>
+                        <li><code>pulumi up</code> - Déployer infrastructure</li>
+                        <li><code>pulumi preview</code> - Prévisualiser changements</li>
+                        <li><code>pulumi stack ls</code> - Lister stacks</li>
+                        <li><code>pulumi config set aws:region us-west-2</code> - Configuration</li>
+                        <li><code>pulumi destroy</code> - Détruire ressources</li>
+                        <li><code>pulumi stack export > backup.json</code> - Exporter état</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Pulumi</span>
+                    <span class="tag">Infrastructure as Code</span>
+                    <span class="tag">Modern IaC</span>
+                </div>
+            </div>
+
+            <!-- Astuce Apache Spark -->
+            <div class="astuce-card" data-category="bigdata">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-fire"></i> Apache Spark - Big Data Processing</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Traitez de gros volumes de données avec Apache Spark.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>spark-submit --class MyApp --master local[4] myapp.jar</code> - Soumettre job Spark
+                        </li>
+                        <li><code>pyspark --master yarn --num-executors 4</code> - Shell Python Spark</li>
+                        <li><code>spark-shell --master local[*]</code> - Shell Scala Spark</li>
+                        <li><code>spark-sql</code> - Interface SQL Spark</li>
+                        <li><code>spark-submit --conf spark.sql.adaptive.enabled=true myapp.py</code> - Optimisation
+                            adaptative</li>
+                        <li><code>curl http://localhost:4040/api/v1/applications</code> - API Spark UI</li>
+                        <li><code>hdfs dfs -ls /spark-logs</code> - Logs Spark sur HDFS</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">Apache Spark</span>
+                    <span class="tag">Big Data</span>
+                    <span class="tag">Processing</span>
+                </div>
+            </div>
+
+            <!-- Astuce LDAP Administration -->
+            <div class="astuce-card" data-category="security">
+                <div class="astuce-header">
+                    <h3><i class="fas fa-users-cog"></i> LDAP - Directory Services</h3>
+                    <span class="difficulty hard">Avancé</span>
+                </div>
+                <p>Administrez vos services d'annuaire LDAP pour l'authentification centralisée.</p>
+                <div class="astuce-content">
+                    <ul>
+                        <li><code>ldapsearch -x -H ldap://localhost -b "dc=example,dc=com"</code> - Recherche LDAP</li>
+                        <li><code>ldapadd -x -D "cn=admin,dc=example,dc=com" -W -f user.ldif</code> - Ajouter entrée
+                        </li>
+                        <li><code>ldapmodify -x -D "cn=admin,dc=example,dc=com" -W -f modify.ldif</code> - Modifier
+                            entrée</li>
+                        <li><code>ldapdelete -x -D "cn=admin,dc=example,dc=com" -W "uid=user,ou=people,dc=example,dc=com"</code>
+                            - Supprimer</li>
+                        <li><code>slapcat > backup.ldif</code> - Sauvegarde OpenLDAP</li>
+                        <li><code>systemctl status slapd</code> - Status serveur LDAP</li>
+                        <li><code>tail -f /var/log/slapd.log</code> - Logs LDAP</li>
+                    </ul>
+                </div>
+                <div class="astuce-tags">
+                    <span class="tag">LDAP</span>
+                    <span class="tag">Directory</span>
+                    <span class="tag">Authentication</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SystemHacks - Base de connaissances système</p>
+    </footer>
+
+    <script>
+        // Filtrage par catégorie
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Retirer active de tous les boutons
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                // Ajouter active au bouton cliqué
+                btn.classList.add('active');
+
+                const category = btn.dataset.category;
+                const cards = document.querySelectorAll('.astuce-card');
+
+                cards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Recherche
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.astuce-card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const content = card.querySelector('p').textContent.toLowerCase();
+                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+
+                if (title.includes(searchTerm) || content.includes(searchTerm) || tags.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

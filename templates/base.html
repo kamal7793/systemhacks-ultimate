@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>{% block title %} SystèmHacks - Vos astuces système{% endblock %}</title>
+    <!-- CSP Nonce pour les scripts inline -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'">
+    <link rel="stylesheet" href="{{ url_for('static', filename='systemhacks\static\css\main.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images\favicon.ico') }}">
+</head>
+<body>
+    {% include 'partials/header.html' %}
+
+    <main class="main-content">
+
+        {% block content %}{% endblock %}
+
+    </main>
+    
+    {%include 'partials/footer.html' %}
+
+    <script src="{{ url_for('static', filename='js\main.js') }}" defer></script>
+</body>
+</html>

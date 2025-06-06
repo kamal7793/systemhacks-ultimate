@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}Linux - Terminal et administration{% endblock %}
+
+{% block content %}
+<section class="category-hero">
+    <div class="container">
+        <div class="category-header">
+            <div class="category-icon-large">🐧</div>
+            <h1>Linux</h1>
+            <p>Maîtrisez le terminal et l'administration système Linux</p>
+        </div>
+    </div>
+</section>
+
+<section class="tips-section">
+    <div class="container">
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Toutes</button>
+            <button class="filter-btn" data-filter="terminal">Terminal</button>
+            <button class="filter-btn" data-filter="admin">Administration</button>
+            <button class="filter-btn" data-filter="securite">Sécurité</button>
+            <button class="filter-btn" data-filter="reseau">Réseau</button>
+        </div>
+
+        <div class="tips-grid" id="tipsGrid">
+            <!-- Astuce Terminal -->
+            <article class="tip-card" data-category="terminal">
+                <div class="tip-header">
+                    <span class="tip-difficulty easy">Facile</span>
+                    <span class="tip-category">Terminal</span>
+                </div>
+                <h3>Navigation rapide dans les dossiers</h3>
+                <p>Utilisez les raccourcis pour naviguer efficacement dans l'arborescence.</p>
+                <div class="tip-preview">
+                    <code>cd ~ # Dossier utilisateur<br>cd - # Dossier précédent</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/navigation-terminal-linux" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+
+            <!-- Astuce Administration -->
+            <article class="tip-card" data-category="admin">
+                <div class="tip-header">
+                    <span class="tip-difficulty medium">Moyen</span>
+                    <span class="tip-category">Administration</span>
+                </div>
+                <h3>Surveiller les processus système</h3>
+                <p>Commandes essentielles pour monitorer votre système Linux.</p>
+                <div class="tip-preview">
+                    <code>htop # Interface interactive<br>ps aux | grep nom_processus</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/surveiller-processus-linux" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+
+            <!-- Astuce Sécurité -->
+            <article class="tip-card" data-category="securite">
+                <div class="tip-header">
+                    <span class="tip-difficulty hard">Avancé</span>
+                    <span class="tip-category">Sécurité</span>
+                </div>
+                <h3>Configurer le firewall UFW</h3>
+                <p>Sécurisez votre système avec un pare-feu bien configuré.</p>
+                <div class="tip-preview">
+                    <code>sudo ufw enable<br>sudo ufw allow ssh</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/configurer-firewall-ufw" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+
+            <!-- Astuce Réseau -->
+            <article class="tip-card" data-category="reseau">
+                <div class="tip-header">
+                    <span class="tip-difficulty medium">Moyen</span>
+                    <span class="tip-category">Réseau</span>
+                </div>
+                <h3>Diagnostiquer la connectivité réseau</h3>
+                <p>Outils de diagnostic réseau intégrés à Linux.</p>
+                <div class="tip-preview">
+                    <code>ping -c 4 google.com<br>traceroute google.com</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/diagnostic-reseau-linux" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+
+            <!-- Astuce Terminal 2 -->
+            <article class="tip-card" data-category="terminal">
+                <div class="tip-header">
+                    <span class="tip-difficulty easy">Facile</span>
+                    <span class="tip-category">Terminal</span>
+                </div>
+                <h3>Historique et recherche de commandes</h3>
+                <p>Retrouvez rapidement vos commandes précédentes.</p>
+                <div class="tip-preview">
+                    <code>history | grep commande<br>Ctrl + R # Recherche interactive</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/historique-commandes-linux" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+
+            <!-- Astuce Administration 2 -->
+            <article class="tip-card" data-category="admin">
+                <div class="tip-header">
+                    <span class="tip-difficulty hard">Avancé</span>
+                    <span class="tip-category">Administration</span>
+                </div>
+                <h3>Gestion des services systemd</h3>
+                <p>Contrôlez les services système avec systemctl.</p>
+                <div class="tip-preview">
+                    <code>systemctl status nginx<br>systemctl enable --now apache2</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/gestion-services-systemd" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="quick-commands">
+    <div class="container">
+        <h2>⚡ Commandes essentielles Linux</h2>
+        <div class="commands-grid">
+            <div class="command-card">
+                <h4>Lister les fichiers détaillés</h4>
+                <code>ls -la</code>
+                <button onclick="copyCommand('ls -la')">📋</button>
+            </div>
+            <div class="command-card">
+                <h4>Espace disque</h4>
+                <code>df -h</code>
+                <button onclick="copyCommand('df -h')">📋</button>
+            </div>
+            <div class="command-card">
+                <h4>Processus en cours</h4>
+                <code>ps aux</code>
+                <button onclick="copyCommand('ps aux')">📋</button>
+            </div>
+            <div class="command-card">
+                <h4>Utilisation mémoire</h4>
+                <code>free -h</code>
+                <button onclick="copyCommand('free -h')">📋</button>
+            </div>
+            <div class="command-card">
+                <h4>Rechercher un fichier</h4>
+                <code>find / -name "fichier"</code>
+                <button onclick="copyCommand('find / -name &quot;fichier&quot;')">📋</button>
+            </div>
+            <div class="command-card">
+                <h4>Permissions de fichier</h4>
+                <code>chmod 755 fichier</code>
+                <button onclick="copyCommand('chmod 755 fichier')">📋</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Erreur 403 - Accès interdit{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <div class="container">
+        <div class="error-content">
+            <h1>🔒 Erreur 403</h1>
+            <h2>Accès interdit</h2>
+            <p>Vous n'avez pas l'autorisation d'accéder à cette ressource.</p>
+            <a href="{{ url_for('index') }}" class="btn-primary">Retour à l'accueil</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

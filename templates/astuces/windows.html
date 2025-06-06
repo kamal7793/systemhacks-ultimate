@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}Windows - Astuces et Solutions{% endblock %}
+
+{% block content %}
+<section class="category-hero">
+    <div class="container">
+        <div class="category-header">
+            <div class="category-icon-large">🪟</div>
+            <h1>Windows</h1>
+            <p>Maîtrisez Windows 10/11 avec nos astuces avancées</p>
+        </div>
+    </div>
+</section>
+
+<section class="tips-section">
+    <div class="container">
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Toutes</button>
+            <button class="filter-btn" data-filter="performance">Performance</button>
+            <button class="filter-btn" data-filter="securite">Sécurité</button>
+            <button class="filter-btn" data-filter="interface">Interface</button>
+            <button class="filter-btn" data-filter="reseau">Réseau</button>
+        </div>
+
+        <div class="tips-grid" id="tipsGrid">
+            <!-- Astuce Performance -->
+            <article class="tip-card" data-category="performance">
+                <div class="tip-header">
+                    <span class="tip-difficulty easy">Facile</span>
+                    <span class="tip-category">Performance</span>
+                </div>
+                <h3>Accélérer le démarrage de Windows</h3>
+                <p>Désactivez les programmes inutiles au démarrage pour gagner en vitesse.</p>
+                <div class="tip-preview">
+                    <code>Win + R → msconfig → Démarrage</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/accelerer-demarrage-windows" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+
+            <!-- Astuce Sécurité -->
+            <article class="tip-card" data-category="securite">
+                <div class="tip-header">
+                    <span class="tip-difficulty medium">Moyen</span>
+                    <span class="tip-category">Sécurité</span>
+                </div>
+                <h3>Activer Windows Defender avancé</h3>
+                <p>Configurez Windows Defender pour une protection maximale.</p>
+                <div class="tip-preview">
+                    <code>Windows Security → Protection contre virus et menaces</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/windows-defender-avance" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+
+            <!-- Astuce Interface -->
+            <article class="tip-card" data-category="interface">
+                <div class="tip-header">
+                    <span class="tip-difficulty easy">Facile</span>
+                    <span class="tip-category">Interface</span>
+                </div>
+                <h3>Raccourcis clavier essentiels</h3>
+                <p>Les combinaisons de touches qui vont révolutionner votre workflow.</p>
+                <div class="tip-preview">
+                    <code>Win + X = Menu administrateur</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/raccourcis-windows-essentiels" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+
+            <!-- Astuce Réseau -->
+            <article class="tip-card" data-category="reseau">
+                <div class="tip-header">
+                    <span class="tip-difficulty hard">Avancé</span>
+                    <span class="tip-category">Réseau</span>
+                </div>
+                <h3>Diagnostiquer les problèmes réseau</h3>
+                <p>Commandes PowerShell pour identifier et résoudre les problèmes réseau.</p>
+                <div class="tip-preview">
+                    <code>Test-NetConnection -ComputerName google.com</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/diagnostic-reseau-powershell" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+
+            <!-- Astuce Performance 2 -->
+            <article class="tip-card" data-category="performance">
+                <div class="tip-header">
+                    <span class="tip-difficulty medium">Moyen</span>
+                    <span class="tip-category">Performance</span>
+                </div>
+                <h3>Optimiser la mémoire virtuelle</h3>
+                <p>Configurez le fichier d'échange pour de meilleures performances.</p>
+                <div class="tip-preview">
+                    <code>Système → Paramètres système avancés → Performance</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/optimiser-memoire-virtuelle" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+
+            <!-- Astuce Interface 2 -->
+            <article class="tip-card" data-category="interface">
+                <div class="tip-header">
+                    <span class="tip-difficulty easy">Facile</span>
+                    <span class="tip-category">Interface</span>
+                </div>
+                <h3>Personnaliser la barre des tâches</h3>
+                <p>Optimisez votre espace de travail avec une barre des tâches sur mesure.</p>
+                <div class="tip-preview">
+                    <code>Clic droit → Paramètres de la barre des tâches</code>
+                </div>
+                <div class="tip-actions">
+                    <a href="/astuce/personnaliser-barre-taches" class="btn-secondary">Voir détails</a>
+                    <button class="btn-icon" onclick="copyTip(this)" title="Copier">📋</button>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="quick-commands">
+    <div class="container">
+        <h2>🚀 Commandes rapides Windows</h2>
+        <div class="commands-grid">
+            <div class="command-card">
+                <h4>Gestionnaire des tâches</h4>
+                <code>Ctrl + Shift + Esc</code>
+                <button onclick="copyCommand('Ctrl + Shift + Esc')">📋</button>
+            </div>
+            <div class="command-card">
+                <h4>Exécuter</h4>
+                <code>Win + R</code>
+                <button onclick="copyCommand('Win + R')">📋</button>
+            </div>
+            <div class="command-card">
+                <h4>Paramètres système</h4>
+                <code>Win + I</code>
+                <button onclick="copyCommand('Win + I')">📋</button>
+            </div>
+            <div class="command-card">
+                <h4>Invite de commandes (Admin)</h4>
+                <code>Win + X → A</code>
+                <button onclick="copyCommand('Win + X puis A')">📋</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
