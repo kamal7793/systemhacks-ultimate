@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum - SystemHacks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+  <nav class="navbar">
+      <div class="nav-container">
+          <h2><a href="{{ url_for('index') }}">SystemHacks</a></h2>
+          <ul class="nav-menu">
+              <li><a href="{{ url_for('index') }}">Accueil</a></li>
+              <li><a href="{{ url_for('categories') }}">Catégories</a></li>
+              <li><a href="{{ url_for('forum') }}" class="active">Forum</a></li>
+              <li><a href="{{ url_for('about') }}">À propos</a></li>
+          </ul>
+      </div>
+  </nav>
+
+  <div class="forum-container">
+      <!-- Messages flash -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              <div class="flash-messages">
+                  {% for category, message in messages %}
+                      <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                  {% endfor %}
+              </div>
+          {% endif %}
+      {% endwith %}
+
+      <!-- En-tête du forum -->
+      <div class="forum-header">
+          <h1>💬 Forum SystemHacks</h1>
+          <p>Partagez vos astuces et posez vos questions</p>
+          <div class="forum-stats">
+              <div class="stat">
+                  <strong>{{ stats.topics }}</strong>
+                  <small>Sujets</small>
+              </div>
+              <div class="stat">
+                  <strong>{{ stats.replies }}</strong>
+                  <small>Réponses</small>
+              </div>
+              <div class="stat">
+                  <strong>{{ stats.members }}</strong>
+                  <small>Membres</small>
+              </div>
+          </div>
+      </div>
+
+      <!-- Bouton nouveau sujet -->
+      <a href="{{ url_for('new_topic') }}" class="new-topic-btn">+ Nouveau sujet</a>
+
+      <!-- Catégories -->
+      <div class="categories">
+          <div class="category">
+              <div class="category-header">
+                  <h3>🐧 Linux</h3>
+              </div>
+              <div class="topics-list">
+                  {% if topics.linux %}
+                      {% for topic in topics.linux[:5] %}
+                      <div class="topic-item">
+                          <a href="{{ url_for('view_topic', topic_id=topic.id) }}" class="topic-title">
+                              {{ topic.title }}
+                          </a>
+                          <div class="topic-meta">
+                              Par {{ topic.author }} • {{ topic.replies }} réponses • {{ topic.date }}
+                          </div>
+                      </div>
+                      {% endfor %}
+                  {% else %}
+                      <div class="topic-item">
+                          <em>Aucun sujet pour le moment</em>
+                      </div>
+                  {% endif %}
+              </div>
+          </div>
+
+          <div class="category">
+              <div class="category-header">
+                  <h3>🪟 Windows</h3>
+              </div>
+              <div class="topics-list">
+                  {% if topics.windows %}
+                      {% for topic in topics.windows[:5] %}
+                      <div class="topic-item">
+                          <a href="{{ url_for('view_topic', topic_id=topic.id) }}" class="topic-title">
+                              {{ topic.title }}
+                          </a>
+                          <div class="topic-meta">
+                              Par {{ topic.author }} • {{ topic.replies }} réponses • {{ topic.date }}
+                          </div>
+                      </div>
+                      {% endfor %}
+                  {% else %}
+                      <div class="topic-item">
+                          <em>Aucun sujet pour le moment</em>
+                      </div>
+                  {% endif %}
+              </div>
+          </div>
+
+          <div class="category">
+              <div class="category-header">
+                  <h3>☁️ Cloud & DevOps</h3>
+              </div>
+              <div class="topics-list">
+                  {% if topics.cloud %}
+                      {% for topic in topics.cloud[:5] %}
+                      <div class="topic-item">
+                          <a href="{{ url_for('view_topic', topic_id=topic.id) }}" class="topic-title">
+                              {{ topic.title }}
+                          </a>
+                          <div class="topic-meta">
+                              Par {{ topic.author }} • {{ topic.replies }} réponses • {{ topic.date }}
+                          </div>
+                      </div>
+                      {% endfor %}
+                  {% else %}
+                      <div class="topic-item">
+                          <em>Aucun sujet pour le moment</em>
+                      </div>
+                  {% endif %}
+              </div>
+          </div>
+
+          <div class="category">
+              <div class="category-header">
+                  <h3>🆘 Aide & Questions</h3>
+              </div>
+              <div class="topics-list">
+                  {% if topics.help %}
+                      {% for topic in topics.help[:5] %}
+                      <div class="topic-item">
+                          <a href="{{ url_for('view_topic', topic_id=topic.id) }}" class="topic-title">
+                              {{ topic.title }}
+                          </a>
+                          <div class="topic-meta">
+                              Par {{ topic.author }} • {{ topic.replies }} réponses • {{ topic.date }}
+                          </div>
+                      </div>
+                      {% endfor %}
+                  {% else %}
+                      <div class="topic-item">
+                          <em>Aucun sujet pour le moment</em>
+                      </div>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+  </div>
+</body>
+</html>
